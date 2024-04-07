@@ -3,17 +3,30 @@ import { createChatLi, generateResponse, setElementColor } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("user-message");
-    const initialMessage = "Hi there! How can I assist you today?"; // Initial message
+    let initialMessage = "Hi there! How can I assist you today?"; // Initial message
+
+    // Parse URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const chatHeaderBgColor = urlParams.get('chatHeaderBgColor') || 'purple';
+    const chatHeaderFontColor = urlParams.get('chatHeaderFontColor') || 'white';
+    const chatTogglerBgColor = urlParams.get('chatTogglerBgColor') || 'purple';
+    const chatTogglerFontColor = urlParams.get('chatTogglerFontColor') || 'white';
+    const chatMessageBgColor = urlParams.get('chatMessageBgColor') || '#f1f1f1';
+    const chatMessageFontColor = urlParams.get('chatMessageFontColor') || 'black';
+    const chatBoxBgColor = urlParams.get('chatBoxBgColor') || 'white';
+    const chatBoxFontColor = urlParams.get('chatBoxFontColor') || 'black';
+    const chatInputBgColor = urlParams.get('chatInputBgColor') || 'black';
+    const chatInputFontColor = urlParams.get('chatInputFontColor') || 'white';
+    const sendBtnFontColor = urlParams.get('sendBtnFontColor') || 'white';
 
     // Set colors dynamically
-    setElementColor('.chatbot header', 'purple', 'white');
-    setElementColor('.chatbot-toggler', 'purple', 'white');
-    // setElementColor('.chatbox .chat p.error', 'gray', 'black');
-    setElementColor('.chatbox .chat p', '#f1f1f1', 'black');
-    setElementColor('.chatbox', 'white', 'black');
-    setElementColor('.chatbot .chat-input', 'black', 'white');
-    setElementColor('.chatbot textarea', 'white', 'black');
-    setElementColor('.chat-input span', '', 'white');
+    setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
+    setElementColor('.chatbot-toggler', chatTogglerBgColor, chatTogglerFontColor);
+    setElementColor('.chatbox .chat p', chatMessageBgColor, chatMessageFontColor); // Change background and font color of chat messages
+    setElementColor('.chatbox', chatBoxBgColor, chatBoxFontColor); // Change background color of the chatbox
+    setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor); // Change font color and background color of chat input area
+    setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor); // Change background color of textarea
+    setElementColor('.chat-input span', '', sendBtnFontColor); // Change font color of send button
 
     // Set prompt and first message
     document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;

@@ -1,7 +1,14 @@
 // main.js
 const chatbox = document.querySelector(".chatbox");
-const API_KEY = "YOUR_API_KEY"; // Insert your OpenAI API key here
 
+// Parse URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const API_KEY = urlParams.get('apiKey');
+const bgColor = urlParams.get('bgColor') || 'purple';
+const fontColor = urlParams.get('fontColor') || 'white';
+const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
+
+// Function to create chat messages
 export const createChatLi = (message, className) => {
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
@@ -10,6 +17,7 @@ export const createChatLi = (message, className) => {
     return chatLi;
 }
 
+// Function to generate chatbot response
 export const generateResponse = (chatElement, userMessage) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
@@ -18,7 +26,7 @@ export const generateResponse = (chatElement, userMessage) => {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`
+            "Authorization": `Bearer ${API_KEY}` // Use client's API key
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
@@ -38,6 +46,7 @@ export const generateResponse = (chatElement, userMessage) => {
         .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 }
 
+// Function to set element colors
 export const setElementColor = (elementSelector, backgroundColor, color) => {
     const element = document.querySelector(elementSelector);
     if (element) {
@@ -47,3 +56,7 @@ export const setElementColor = (elementSelector, backgroundColor, color) => {
         console.error(`Element with selector '${elementSelector}' not found.`);
     }
 }
+
+// Initialize chatbot with customizations
+setElementColor('.chatbot header', bgColor, fontColor);
+document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
