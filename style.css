@@ -129,7 +129,7 @@ header h2 {
   border-radius: 4px;
   margin: 0 10px 7px 0;
 }
-.chatbox .incoming p {
+/* .chatbox .chat p {
   white-space: pre-wrap;
   padding: 12px 16px;
   border-radius: 10px 10px 0 10px;
@@ -137,19 +137,10 @@ header h2 {
   color: #fff;
   font-size: 0.95rem;
   background: #724ae8;
-}
-.chatbox .outgoing p {
-  white-space: pre-wrap;
-  padding: 12px 16px;
-  border-radius: 10px 10px 0 10px;
-  max-width: 75%;
-  color: #fff;
-  font-size: 0.95rem;
-  background: #724ae8;
-}
-/* .chatbox .incoming p {
-  border-radius: 10px 10px 10px 0;
 } */
+.chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+}
 .chatbox .chat p.error {
   color: black;
   background: #f8d7da;
