@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor); // Change font color and background color of chat input area
     setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor); // Change background color of textarea
     setElementColor('.chat-input span', '', sendBtnFontColor); // Change font color of send button
+    setElementColor('.chatbox .incoming p', chatInputBgColor, chatInputFontColor); // Change font color of send button
+    setElementColor('.chatbox  .outgoing p', chatInputBgColor, chatInputFontColor); // Change font color of send button
 
     // Set prompt and first message
     document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
