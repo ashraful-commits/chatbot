@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const outgoingListBgColor = urlParams.get('outgoingListBgColor') || 'purple';
     
     const outgoingListFontColor = urlParams.get('outgoingListFontColor') || 'white';
-    const iconBgColor = urlParams.get('incomingListFontColor') || 'purple';
-    const iconColor = urlParams.get('incomingListFontColor') || 'white';
+    const iconBgColor = urlParams.get('iconBgColor') || 'purple';
+    const iconColor = urlParams.get('iconColor') || 'white';
 
     // Set colors dynamically
     setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
