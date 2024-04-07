@@ -19,19 +19,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatInputBgColor = urlParams.get('chatInputBgColor') || 'black';
     const chatInputFontColor = urlParams.get('chatInputFontColor') || 'white';
     const sendBtnFontColor = urlParams.get('sendBtnFontColor') || 'white';
-    const incomingListBgColor = urlParams.get('incomingListBgColor') || 'white';
+    const incomingListBgColor = urlParams.get('incomingListBgColor') || 'purple';
     const incomingListFontColor = urlParams.get('incomingListFontColor') || 'white';
+    const incomingListErrorBgColor = urlParams.get('incomingListBgColor') || 'red';
+    const incomingListErrorFontColor = urlParams.get('incomingListFontColor') || 'white';
+    const outgoingListBgColor = urlParams.get('outgoingListBgColor') || 'purple';
+    
+    const outgoingListFontColor = urlParams.get('outgoingListFontColor') || 'white';
+    const iconBgColor = urlParams.get('incomingListFontColor') || 'purple';
+    const iconColor = urlParams.get('incomingListFontColor') || 'white';
 
     // Set colors dynamically
     setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
     setElementColor('.chatbot-toggler', chatTogglerBgColor, chatTogglerFontColor);
     setElementColor('.chatbox .chat p', chatMessageBgColor, chatMessageFontColor); // Change background and font color of chat messages
+    setElementColor('.chatbox li:first-child p', chatMessageBgColor, chatMessageFontColor); // Change background and font color of chat messages
+    setElementColor('.chatbox li:first-child .material-symbols-outlined', iconBgColor, iconColor); // Change background and font color of chat messages
+    setElementColor('.chatbox .chat .error', incomingListErrorBgColor, incomingListErrorFontColor); // Change background and font color of chat messages
     setElementColor('.chatbox', chatBoxBgColor, chatBoxFontColor); // Change background color of the chatbox
     setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor); // Change font color and background color of chat input area
     setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor); // Change background color of textarea
     setElementColor('.chat-input span', '', sendBtnFontColor); // Change font color of send button
-    setElementColor('.chatbox .incoming p', incomingListBgColor, incomingListFontColor); // Change font color of send button
-    setElementColor('.chatbox  .outgoing p', incomingListBgColor, incomingListFontColor); // Change font color of send button
+    
 
     // Set prompt and first message
     document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
@@ -44,12 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
         chatInput.value = "";
 
         // Append the user's message to the chatbox
-        chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+        chatbox.appendChild(createChatLi(userMessage, "outgoing",outgoingListBgColor,outgoingListFontColor,iconBgColor,
+        iconColor));
         chatbox.scrollTo(0, chatbox.scrollHeight);
 
         setTimeout(() => {
             // Display "Thinking..." message while waiting for the response
-            const incomingChatLi = createChatLi("Thinking...", "incoming");
+            const incomingChatLi = createChatLi("Thinking...", "incoming",incomingListBgColor,incomingListBgColor,iconBgColor
+            ,iconColor);
             chatbox.appendChild(incomingChatLi);
             chatbox.scrollTo(0, chatbox.scrollHeight);
             generateResponse(incomingChatLi, userMessage);

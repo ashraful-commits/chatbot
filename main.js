@@ -9,10 +9,10 @@ const fontColor = urlParams.get('fontColor') || 'white';
 const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
 
 // Function to create chat messages
-export const createChatLi = (message, className) => {
+export const createChatLi = (message, className,bgColor,color,iconBgColor,iconColor) => {
     const chatLi = document.createElement("li");
     chatLi.classList.add("chat", className);
-    const chatContent = className === "outgoing" ? `<p>${message}</p>` : `<span class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+    const chatContent = className === "outgoing" ? `<p style="background-color: ${bgColor}; color:${color};">${message}</p>` : `<span style="background-color: ${iconBgColor};color:${iconColor}" class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
     chatLi.innerHTML = chatContent;
     return chatLi;
 }
@@ -59,4 +59,3 @@ export const setElementColor = (elementSelector, backgroundColor, color) => {
 
 // Initialize chatbot with customizations
 setElementColor('.chatbot header', bgColor, fontColor);
-document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;

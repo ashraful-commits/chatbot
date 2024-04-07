@@ -111,7 +111,11 @@ header h2 {
   padding:10px;
   border-radius: 10px 10px 0 10px;
 }
-.chatbox .chat p:first-of-type {
+.chatbox li:first-child .material-symbols-outlined {
+  color:white;
+  background-color: red;
+}
+.chatbox li:first-child p {
   color:white;
   background-color: #724ae8;
   padding:10px;
