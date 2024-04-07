@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sendBtnFontColor = urlParams.get('sendBtnFontColor') || 'white';
     const incomingListBgColor = urlParams.get('incomingListBgColor') || 'purple';
     const incomingListFontColor = urlParams.get('incomingListFontColor') || 'white';
-    const incomingListErrorBgColor = urlParams.get('incomingListBgColor') || 'red';
+    const incomingListErrorBgColor = urlParams.get('incomingListBgColor') || 'white';
     const incomingListErrorFontColor = urlParams.get('incomingListFontColor') || 'white';
     const outgoingListBgColor = urlParams.get('outgoingListBgColor') || 'purple';
     
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
     setElementColor('.chatbot-toggler', chatTogglerBgColor, chatTogglerFontColor);
     setElementColor('.chatbox .chat p', chatMessageBgColor, chatMessageFontColor); // Change background and font color of chat messages
-    setElementColor('.chatbox li:first-child p', chatMessageBgColor, chatMessageFontColor); // Change background and font color of chat messages
+    setElementColor('.chatbox li:first-child p', incomingListErrorBgColor, incomingListErrorFontColor); // Change background and font color of chat messages
     setElementColor('.chatbox li:first-child .material-symbols-outlined', iconBgColor, iconColor); // Change background and font color of chat messages
     setElementColor('.chatbox .chat .error', incomingListErrorBgColor, incomingListErrorFontColor); // Change background and font color of chat messages
     setElementColor('.chatbox', chatBoxBgColor, chatBoxFontColor); // Change background color of the chatbox
