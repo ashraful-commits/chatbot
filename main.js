@@ -59,3 +59,4 @@ export const setElementColor = (elementSelector, backgroundColor, color) => {
 
 // Initialize chatbot with customizations
 setElementColor('.chatbot header', bgColor, fontColor);
+document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
