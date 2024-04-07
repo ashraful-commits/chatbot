@@ -179,6 +179,9 @@ header h2 {
   font-size: 0.95rem;
   border-radius: 5px;
 }
+.chat-input textarea:focus{
+  color: black;
+}
 .chat-input span {
   align-self: flex-end;
   color: #724ae8;
