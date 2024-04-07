@@ -3,10 +3,11 @@ import { createChatLi, generateResponse, setElementColor } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("user-message");
-    let initialMessage = "Hi there! How can I assist you today?"; // Initial message
+   
 
     // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
+    const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
     const chatHeaderBgColor = urlParams.get('chatHeaderBgColor') || 'purple';
     const chatHeaderFontColor = urlParams.get('chatHeaderFontColor') || 'white';
     const chatTogglerBgColor = urlParams.get('chatTogglerBgColor') || 'purple';
