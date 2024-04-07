@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatBoxFontColor = urlParams.get('chatBoxFontColor') || 'black';
     const chatInputBgColor = urlParams.get('chatInputBgColor') || 'black';
     const chatInputFontColor = urlParams.get('chatInputFontColor') || 'white';
+    const sendBtnFontColor = urlParams.get('sendBtnFontColor') || 'white';
     const incomingListBgColor = urlParams.get('incomingListBgColor') || 'white';
     const incomingListFontColor = urlParams.get('incomingListFontColor') || 'white';
 
