@@ -3,7 +3,7 @@ import { createChatLi, generateResponse, setElementColor } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("user-message");
-   
+    const chatbotFrame = document.getElementById('chatbotFrame');
 
     // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const iconColor = urlParams.get('iconColor') || 'white';
     const bodyWidth = urlParams.get('bodyWidth') || '50px';
     const bodyHeight = urlParams.get('bodyHeight') || '50px';
+    const chatbotFrameHeight= urlParams.get('chatbotFrameHeight') || '50px';
+    const chatbotFrameWidth = urlParams.get('chatbotFrameWidth') || '50px';
 
     // Set colors dynamically
     setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
@@ -89,11 +91,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.height = "50px";
         document.body.style.overflow = "hidden";
         document.body.style.borderRadius = "100%";
+        chatbotFrame.style.height = '50px'
+        chatbotFrame.style.width = '50px'
     });
     
     chatbotToggler.addEventListener("click", () => {
         document.body.classList.toggle("show-chatbot");
+        chatbotFrame.style.height = chatbotFrameHeight
+        chatbotFrame.style.width = chatbotFrameWidth
         document.body.style.width = bodyWidth;
+
         document.body.style.height = bodyHeight;
         document.body.style.borderRadius = "";
     });
