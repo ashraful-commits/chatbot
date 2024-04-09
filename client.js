@@ -79,17 +79,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const chatbotToggler = document.querySelector(".chatbot-toggler");
-    const closeBtn = document.querySelector(".close-btn");
-    const chatbox = document.querySelector(".chatbox");
 
-    closeBtn.addEventListener("click", () => {document.body.classList.remove("show-chatbot")
-    document.body.style.width="0px"
-    document.body.style.height="0px"
-});
-    chatbotToggler.addEventListener("click", () =>{ document.body.classList.toggle("show-chatbot")
-    document.body.style.width=bodyWidth
-    document.body.style.height=bodyHeight
-
-});
 });
