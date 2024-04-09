@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const outgoingListFontColor = urlParams.get('outgoingListFontColor') || 'white';
     const iconBgColor = urlParams.get('iconBgColor') || 'purple';
     const iconColor = urlParams.get('iconColor') || 'white';
+    const bodyWidth = urlParams.get('bodyWidth') || '50px';
+    const bodyHeight = urlParams.get('bodyHeight') || '50px';
 
     // Set colors dynamically
     setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
@@ -40,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor); // Change font color and background color of chat input area
     setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor); // Change background color of textarea
     setElementColor('.chat-input span', '', sendBtnFontColor); // Change font color of send button
+    setElementColor('body', '', bodyWidth); // Change font color of send button
+    setElementColor('body', '', bodyHeight); // Change font color of send button
     
 
     // Set prompt and first message
@@ -81,6 +85,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".close-btn");
     const chatbox = document.querySelector(".chatbox");
 
-    closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
-    chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+    // closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+    // chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+    const closeBtn = document.getElementById("closeBtn");
+const chatbotToggler = document.getElementById("chatbotToggler");
+
+// Function to toggle the chatbot UI
+function toggleChatbot() {
+    document.body.classList.toggle("show-chatbot");
+
+    // Adjust body height and width based on chatbot visibility
+    if (document.body.classList.contains("show-chatbot")) {
+        // Set body height and width when chatbot is visible
+        document.body.style.height = bodyHeight;
+        document.body.style.width = bodyWidth;
+        document.body.style.borderRadius = "100%";
+    } else {
+        // Reset body height and width when chatbot is hidden
+        document.body.style.height = "50px"; // Reset to default
+        document.body.style.width = "50px"; // Reset to default
+    }
+}
+
+// Add click event listeners to close button and chatbot toggler
+closeBtn.addEventListener("click", toggleChatbot);
+chatbotToggler.addEventListener("click", toggleChatbot);
+
 });
