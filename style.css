@@ -49,7 +49,6 @@ body.show-chatbot .chatbot-toggler span:last-child {
   width: auto;
   background: #fff;
   min-height: 500px;
-  max-height: 500px;
   border-radius: 15px;
   overflow: hidden;
   opacity: 0;
@@ -217,7 +216,6 @@ header h2 {
     right: 25px;
     bottom: 68px;
     min-height: 500px;
-    max-height: 500px;
     border-radius: 10px;
     overflow-y: auto;
    width: auto;
