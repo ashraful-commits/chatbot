@@ -214,6 +214,7 @@ header h2 {
     bottom: 20px;
   }
   .chatbot {
+    position: fixed;
     right: 25px;
     bottom: 68px;
     min-height: 500px;
