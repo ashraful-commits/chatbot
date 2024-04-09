@@ -3,8 +3,7 @@ import { createChatLi, generateResponse, setElementColor } from './main.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document.getElementById("user-message");
-    const chatbotFrame = document.getElementById('chatbotFrame');
-
+    
     // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
@@ -84,7 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatbotToggler = document.querySelector(".chatbot-toggler");
     const closeBtn = document.querySelector(".close-btn");
     const chatbox = document.querySelector(".chatbox");
-    
+    const chatbotFrame = document.getElementById('chatbotFrame');
+
     closeBtn.addEventListener("click", () => {
         document.body.classList.remove("show-chatbot");
         document.body.style.width = '50px';
