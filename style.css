@@ -210,9 +210,9 @@ header h2 {
   .chatbot {
     right: 25px;
     bottom: 68px;
-    min-height: 500px;
+    min-height: 550px;
     border-radius: 10px;
-    min-width: 100%;
+    min-width: 420px;
   }
   .chatbot .chatbox {
     height: 90%;
