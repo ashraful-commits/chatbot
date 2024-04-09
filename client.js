@@ -85,18 +85,17 @@ document.addEventListener("DOMContentLoaded", () => {
     
     closeBtn.addEventListener("click", () => {
         document.body.classList.remove("show-chatbot");
-        document.body.style.width = bodyWidth;
-        document.body.style.height = bodyHeight;
+        document.body.style.width = '50px';
+        document.body.style.height = "50px";
         document.body.style.overflow = "hidden";
-        document.body.style.borderRadius = "hidden";
+        document.body.style.borderRadius = "100%";
     });
     
     chatbotToggler.addEventListener("click", () => {
         document.body.classList.toggle("show-chatbot");
-        document.body.style.width = "50px";
-        document.body.style.height = "50px";
-        document.body.style.overflow = "hidden";
-        document.body.style.borderRadius = "hidden";
+        document.body.style.width = bodyWidth;
+        document.body.style.height = bodyHeight;
+        document.body.style.borderRadius = "";
     });
     
 });
