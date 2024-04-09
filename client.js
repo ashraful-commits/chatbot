@@ -31,11 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Set colors dynamically
     setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
-    setElementColor('.chatbot-toggler', chatTogglerBgColor, chatTogglerFontColor);
     setElementColor('.chatbox .chat p', chatMessageBgColor, chatMessageFontColor);
     setElementColor('.chatbox li:first-child p', incomingListErrorBgColor, incomingListErrorFontColor);
     setElementColor('.chatbox li:first-child .material-symbols-outlined', iconBgColor, iconColor);
-    setElementColor('.chatbox .chat .error', incomingListErrorBgColor, incomingListErrorFontColor);
     setElementColor('.chatbox', chatBoxBgColor, chatBoxFontColor);
     setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor);
     setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor);
