@@ -9,8 +9,8 @@
 }
 body {
   background: transparent;
-  min-width: 420px;
-  min-height: 520px;
+  max-width: 420px;
+  max-height: 520px;
 }
 .chatbot-toggler {
   position: fixed;
