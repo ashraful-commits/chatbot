@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor); // Change font color and background color of chat input area
     setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor); // Change background color of textarea
     setElementColor('.chat-input span', '', sendBtnFontColor); // Change font color of send button
-
+    
 
     // Set prompt and first message
     document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
@@ -82,30 +82,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatbotToggler = document.querySelector(".chatbot-toggler");
     const closeBtn = document.querySelector(".close-btn");
     const chatbox = document.querySelector(".chatbox");
-
     
-    // Function to toggle the chatbot UI and adjust body width and height
-    function toggleChatbot() {
+    closeBtn.addEventListener("click", () => {
+        document.body.classList.remove("show-chatbot");
+        document.body.style.width = bodyWidth;
+        document.body.style.height = bodyHeight;
+        document.body.style.overflow = "hidden";
+        document.body.style.borderRadius = "hidden";
+    });
+    
+    chatbotToggler.addEventListener("click", () => {
         document.body.classList.toggle("show-chatbot");
+        document.body.style.width = "50px";
+        document.body.style.height = "50px";
+        document.body.style.overflow = "hidden";
+        document.body.style.borderRadius = "hidden";
+    });
     
-        // Adjust body height and width based on chatbot visibility
-        if (document.body.classList.contains("show-chatbot")) {
-            // Set body height and width when chatbot is visible
-            document.body.style.height = bodyHeight // Set height to 500px (adjust as needed)
-            document.body.style.width = bodyWidth; // Set width to 600px (adjust as needed)
-            document.body.style.borderRadius = ""; // Set border-radius to 600px (adjust as needed)
-            
-        } else {
-            // Reset body height and width when chatbot is hidden
-            document.body.style.height = "50px"; // Reset to default (let CSS handle it)
-            document.body.style.width = "50px"; // Reset to default (let CSS handle it)
-            document.body.style.borderRadius = "100%"; // Set border-radius to 600px (adjust as needed)
-        }
-    }
-    
-    // Add click event listeners to close button and chatbot toggler
-    closeBtn.addEventListener("click", toggleChatbot);
-    chatbotToggler.addEventListener("click", toggleChatbot);
-    
-
 });
