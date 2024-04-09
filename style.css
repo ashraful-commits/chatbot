@@ -9,6 +9,8 @@
 }
 body {
   background: transparent;
+  min-width: 420px;
+  min-height: 520px;
 }
 .chatbot-toggler {
   position: fixed;
@@ -44,8 +46,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   position: fixed;
   right: 35px;
   bottom: 90px;
-  min-width: 420px;
-  min-height: 520px;
+
   height: 100%;
   width: 100%;
   background: #fff;
