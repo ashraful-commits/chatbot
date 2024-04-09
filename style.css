@@ -43,7 +43,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   opacity: 1;
 }
 .chatbot {
-  position: fixed;
+  position: relative;
   right: 35px;
   bottom: 100px;
   width: auto;
@@ -67,6 +67,8 @@ body.show-chatbot .chatbot {
   transform: scale(1);
 }
 .chatbot header {
+  position: sticky;
+  top: 0;
   padding: 16px 0;
   position: relative;
   text-align: center;
@@ -173,7 +175,7 @@ header h2 {
 .chatbot .chat-input {
   display: flex;
   gap: 5px;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   width: 100%;
   background: #fff;
