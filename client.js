@@ -85,30 +85,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".close-btn");
     const chatbox = document.querySelector(".chatbox");
 
-    // closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
-    // chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
-    const closeBtn = document.getElementById("closeBtn");
-const chatbotToggler = document.getElementById("chatbotToggler");
-
-// Function to toggle the chatbot UI
-function toggleChatbot() {
-    document.body.classList.toggle("show-chatbot");
-
-    // Adjust body height and width based on chatbot visibility
-    if (document.body.classList.contains("show-chatbot")) {
-        // Set body height and width when chatbot is visible
-        document.body.style.height = bodyHeight;
-        document.body.style.width = bodyWidth;
-        document.body.style.borderRadius = "100%";
-    } else {
-        // Reset body height and width when chatbot is hidden
-        document.body.style.height = "50px"; // Reset to default
-        document.body.style.width = "50px"; // Reset to default
+    
+    // Function to toggle the chatbot UI and adjust body width and height
+    function toggleChatbot() {
+        document.body.classList.toggle("show-chatbot");
+    
+        // Adjust body height and width based on chatbot visibility
+        if (document.body.classList.contains("show-chatbot")) {
+            // Set body height and width when chatbot is visible
+            document.body.style.height = "500px"; // Set height to 500px (adjust as needed)
+            document.body.style.width = "600px"; // Set width to 600px (adjust as needed)
+        } else {
+            // Reset body height and width when chatbot is hidden
+            document.body.style.height = ""; // Reset to default (let CSS handle it)
+            document.body.style.width = ""; // Reset to default (let CSS handle it)
+        }
     }
-}
-
-// Add click event listeners to close button and chatbot toggler
-closeBtn.addEventListener("click", toggleChatbot);
-chatbotToggler.addEventListener("click", toggleChatbot);
+    
+    // Add click event listeners to close button and chatbot toggler
+    closeBtn.addEventListener("click", toggleChatbot);
+    chatbotToggler.addEventListener("click", toggleChatbot);
+    
 
 });
