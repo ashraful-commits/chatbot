@@ -93,14 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // Adjust body height and width based on chatbot visibility
         if (document.body.classList.contains("show-chatbot")) {
             // Set body height and width when chatbot is visible
-            document.body.style.height = "500px"; // Set height to 500px (adjust as needed)
-            document.body.style.width = "600px"; // Set width to 600px (adjust as needed)
-            document.body.style.borderRadius = "100%"; // Set border-radius to 600px (adjust as needed)
+            document.body.style.height = bodyHeight // Set height to 500px (adjust as needed)
+            document.body.style.width = "bodyWidth"; // Set width to 600px (adjust as needed)
+            document.body.style.borderRadius = ""; // Set border-radius to 600px (adjust as needed)
             
         } else {
             // Reset body height and width when chatbot is hidden
             document.body.style.height = "50px"; // Reset to default (let CSS handle it)
             document.body.style.width = "50px"; // Reset to default (let CSS handle it)
+            document.body.style.borderRadius = "100%"; // Set border-radius to 600px (adjust as needed)
         }
     }
     
