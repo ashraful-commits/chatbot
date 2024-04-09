@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (document.body.classList.contains("show-chatbot")) {
             // Set body height and width when chatbot is visible
             document.body.style.height = bodyHeight // Set height to 500px (adjust as needed)
-            document.body.style.width = "bodyWidth"; // Set width to 600px (adjust as needed)
+            document.body.style.width = bodyWidth; // Set width to 600px (adjust as needed)
             document.body.style.borderRadius = ""; // Set border-radius to 600px (adjust as needed)
             
         } else {
