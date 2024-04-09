@@ -114,6 +114,7 @@ header h2 {
 .chatbox li:first-child .material-symbols-outlined {
   color:white;
   background-color: red;
+
 }
 .chatbox li:first-child p {
   color:white;
@@ -182,6 +183,8 @@ header h2 {
   padding: 15px 15px 15px 10px;
   font-size: 0.95rem;
   border-radius: 5px;
+  background-color: red;
+  color:red;
  
 }
 

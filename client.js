@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const chatMessageFontColor = urlParams.get('chatMessageFontColor') || 'black';
     const chatBoxBgColor = urlParams.get('chatBoxBgColor') || 'white';
     const chatBoxFontColor = urlParams.get('chatBoxFontColor') || 'black';
-    const chatInputBgColor = urlParams.get('chatInputBgColor') || 'black';
+    const chatInputBgColor = urlParams.get('chatInputBgColor') || 'purple';
     const chatInputFontColor = urlParams.get('chatInputFontColor') || 'white';
     const sendBtnFontColor = urlParams.get('sendBtnFontColor') || 'white';
     const incomingListBgColor = urlParams.get('incomingListBgColor') || 'purple';
     const incomingListFontColor = urlParams.get('incomingListFontColor') || 'white';
-    const incomingListErrorBgColor = urlParams.get('incomingListBgColor') || 'white';
+    const incomingListErrorBgColor = urlParams.get('incomingListBgColor') || 'purple';
     const incomingListErrorFontColor = urlParams.get('incomingListFontColor') || 'white';
     const outgoingListBgColor = urlParams.get('outgoingListBgColor') || 'purple';
     

@@ -1,9 +1,9 @@
 // main.js
 const chatbox = document.querySelector(".chatbox");
 
+const API_KEY = "INSERT YOUR API KEY HERE"
 // Parse URL parameters
 const urlParams = new URLSearchParams(window.location.search);
-const API_KEY = urlParams.get('apiKey');
 const bgColor = urlParams.get('bgColor') || 'purple';
 const fontColor = urlParams.get('fontColor') || 'white';
 const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
