@@ -172,8 +172,9 @@ header h2 {
   background: #fff;
   padding: 3px 20px;
   border-top: 1px solid #ddd;
+  
 }
-.chat-input textarea {
+.chatbot .chat-input textarea {
   height: 55px;
   width: 100%;
   border: none;
@@ -183,8 +184,8 @@ header h2 {
   padding: 15px 15px 15px 10px;
   font-size: 0.95rem;
   border-radius: 5px;
-  background-color: red;
-  color:red;
+  background-color: white !important;
+  color:black !important;
  
 }
 
@@ -210,7 +211,7 @@ header h2 {
   .chatbot {
     right: 25px;
     bottom: 68px;
-    min-height: 550px;
+    min-height: 500px;
     border-radius: 10px;
     min-width: 420px;
   }
