@@ -9,7 +9,8 @@
 }
 body {
   background: transparent;
-
+  width: 50px;
+  height: 50px;
 }
 .chatbot-toggler {
   position: fixed;
@@ -42,23 +43,25 @@ body.show-chatbot .chatbot-toggler span:last-child {
   opacity: 1;
 }
 .chatbot {
+  position: fixed;
   right: 35px;
   bottom: 100px;
-  width: auto;
+  width: 420px;
   background: #fff;
   border-radius: 15px;
-  overflow-y:auto;
-  max-height: 550px;
-  min-height: 550px;
+  overflow: hidden;
+  opacity: 0;
   pointer-events: none;
-  transform: scale(1);
+  transform: scale(0.5);
   transform-origin: bottom right;
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
               0 32px 64px -48px rgba(0,0,0,0.5);
   transition: all 0.1s ease;
 }
 body.show-chatbot .chatbot {
+  opacity: 1;
   pointer-events: auto;
+  transform: scale(1);
 }
 .chatbot header {
   padding: 16px 0;
@@ -82,7 +85,6 @@ header h2 {
 .chatbot .chatbox {
   overflow-y: auto;
   height: 510px;
-  max-height:  495px;;
   padding: 30px 20px 100px;
 }
 .chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
@@ -211,10 +213,9 @@ header h2 {
   .chatbot {
     right: 25px;
     bottom: 68px;
-    max-height: 550px;
-    min-height: 550px;
+    min-height: 500px;
     border-radius: 10px;
-    width: auto;
+    min-width: 420px;
   }
   .chatbot .chatbox {
     height: 90%;
