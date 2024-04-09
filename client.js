@@ -95,10 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
             // Set body height and width when chatbot is visible
             document.body.style.height = "500px"; // Set height to 500px (adjust as needed)
             document.body.style.width = "600px"; // Set width to 600px (adjust as needed)
+            document.body.style.borderRadius = "100%"; // Set border-radius to 600px (adjust as needed)
+            
         } else {
             // Reset body height and width when chatbot is hidden
-            document.body.style.height = ""; // Reset to default (let CSS handle it)
-            document.body.style.width = ""; // Reset to default (let CSS handle it)
+            document.body.style.height = "50px"; // Reset to default (let CSS handle it)
+            document.body.style.width = "50px"; // Reset to default (let CSS handle it)
         }
     }
     
