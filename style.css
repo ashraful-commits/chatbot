@@ -43,31 +43,27 @@ body.show-chatbot .chatbot-toggler span:last-child {
   opacity: 1;
 }
 .chatbot {
-  position: relative;
+  position: fixed;
   right: 35px;
   bottom: 100px;
-  width: auto;
+  width: 420px;
   background: #fff;
   border-radius: 15px;
-  width: 420px;
-  height: 600px;
   overflow: hidden;
+  opacity: 0;
   pointer-events: none;
-  transform: scale(.5);
+  transform: scale(0.5);
   transform-origin: bottom right;
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
               0 32px 64px -48px rgba(0,0,0,0.5);
   transition: all 0.1s ease;
 }
-
 body.show-chatbot .chatbot {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
 }
 .chatbot header {
-  position: sticky;
-  top: 0;
   padding: 16px 0;
   position: relative;
   text-align: center;
@@ -89,10 +85,7 @@ header h2 {
 .chatbot .chatbox {
   overflow-y: auto;
   height: 510px;
-  overflow-y: auto;
-  flex: 1;
   padding: 30px 20px 100px;
-  min-width: 420px;
 }
 .chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
   width: 6px;
@@ -175,7 +168,7 @@ header h2 {
 .chatbot .chat-input {
   display: flex;
   gap: 5px;
-  position: sticky;
+  position: absolute;
   bottom: 0;
   width: 100%;
   background: #fff;
@@ -218,20 +211,15 @@ header h2 {
     bottom: 20px;
   }
   .chatbot {
-    position: relative;
     right: 25px;
     bottom: 68px;
     min-height: 500px;
-    max-height: 500px;
     border-radius: 10px;
-    overflow-y: auto;
-   width: auto;
+    min-width: 420px;
   }
   .chatbot .chatbox {
-    height: 100%;
-    overflow-y: auto;
+    height: 90%;
     padding: 25px 15px 100px;
-    flex: 1;
   }
   .chatbot .chat-input {
     padding: 5px 15px;
