@@ -3,7 +3,6 @@ import { createChatLi, generateResponse, setElementColor } from './main.js';
 document.addEventListener("DOMContentLoaded", () => {
     const chatInput = document?.getElementById("usermessage");
     const chatbox = document.querySelector(".chatbox"); // Declare chatbox variable
-    console.log(chatInput)
     // Parse URL parameters
     const urlParams = new URLSearchParams(window.location.search);
     const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
