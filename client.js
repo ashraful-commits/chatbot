@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatInput = document.querySelector(".chat-input textarea");
     const sendChatBtn = document.querySelector(".chat-input span");
     let userMessage = null; // Variable to store user's message
-    const inputInitHeight = chatInput.scrollHeight;
+    // const inputInitHeight = chatInput.scrollHeight;
     const urlParams = new URLSearchParams(window.location.search);
     const bgColor = urlParams.get('bgColor') || 'purple';
     const color = urlParams.get('color') || 'purple';
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Clear the input textarea and set its height to default
         chatInput.value = "";
-        chatInput.style.height = `${inputInitHeight}px`;
+        // chatInput.style.height = `${inputInitHeight}px`;
 
         // Append the user's message to the chatbox
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
