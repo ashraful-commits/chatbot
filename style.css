@@ -9,8 +9,7 @@
 }
 body {
   background: none;
-  width: 50px;
-  height: 50px;
+
 }
 .chatbot-toggler {
   position: fixed;
@@ -46,8 +45,8 @@ body.show-chatbot .chatbot-toggler span:last-child {
   position: fixed;
   right: 35px;
   bottom: 90px;
-  height: 550px;
   width: 420px;
+  height: 550px;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -180,8 +179,9 @@ header h2 {
   }
   .chatbot {
     right: 0;
-    bottom: 50px;
+    bottom: 0;
     height: 550px;
+
     border-radius: 0;
     width: 100%;
   }
