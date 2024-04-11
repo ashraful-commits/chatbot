@@ -1,5 +1,5 @@
 
-const chatbox = document.querySelector(".chatbox");
+// Define your variables and constants
 const API_KEY = "YOUR_API_KEY"; // Replace with your OpenAI API key
 
 // Function to generate a response using ChatGPT
@@ -44,7 +44,7 @@ export const generateChatGPTResponse = (chatElement, userMessage, chatGPTPrompt)
             // Display an error message in the chat
             messageElement.classList.add("error");
             messageElement.textContent = "Oops! Something went wrong. Please try again.";
-        }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+        });
 };
 
 // Define and export the createChatLi function

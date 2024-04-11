@@ -9,7 +9,7 @@ function generateEmbedCode(prompt, bgColor, color, firstMessage) {
 
   const embedCode = `
   <iframe src="${chatbotUrl}?prompt=${prompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" 
-  width="300px" height="500px" frameborder="0" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:750px; width:100%"></iframe>
+  width="300px" height="500px" frameborder="0" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:750px; width:100%; z-index:999999"></iframe>
 `;
 
   return embedCode;
