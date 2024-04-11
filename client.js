@@ -24,12 +24,12 @@ const handleChat = () => {
   chatbox.scrollTo(0, chatbox.scrollHeight);
   
   setTimeout(() => {
-      // Display "Thinking..." message while waiting for the response
-      const incomingChatLi = createChatLi("Thinking...", "incoming");
-      chatbox.appendChild(incomingChatLi);
-      chatbox.scrollTo(0, chatbox.scrollHeight);
-      generateResponse(incomingChatLi,userMessage);
-  }, 600);
+    const incomingChatLi = createChatLi("Thinking...", "incoming");
+    chatbox.appendChild(incomingChatLi);
+    chatbox.scrollIntoView({ behavior: "smooth", block: "end" });
+    const chatGPTPrompt = "CHATGPT Prompt: " + userMessage; // Construct the ChatGPT prompt
+    generateChatGPTResponse(incomingChatLi, userMessage, chatGPTPrompt); // Pass the ChatGPT prompt
+}, 600);
 }
 
 chatInput.addEventListener("input", () => {
