@@ -9,7 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
         const prompt = urlParams.get('prompt');
         
-       
+        // Create elements
+        const chatbotToggler = document.createElement("button");
+        chatbotToggler.classList.add("chatbot-toggler");
+        chatbotToggler.innerHTML = `<span class="material-symbols-rounded">mode_comment</span>
+                                    <span class="material-symbols-outlined">close</span>`;
         
         const chatbot = document.createElement("div");
         chatbot.classList.add("chatbot");
@@ -29,11 +33,14 @@ document.addEventListener("DOMContentLoaded", function() {
                             </div>`;
         
         // Append elements to the body
+        document.body.appendChild(chatbotToggler);
         document.body.appendChild(chatbot);
         
         setElementColor(".chatbot header", bgColor, color); // Example colors
         setElementColor(".chatbot-toggler", bgColor, color); // Example colors
- 
+        
+        // Add event listeners
+        chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
         const closeBtn = chatbot.querySelector(".close-btn");
         closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 
