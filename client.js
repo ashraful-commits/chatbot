@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setElementColor('.chatbot header', bgColor, color);
     setElementColor('.chatbox .incoming span', bgColor, color);
     setElementColor('.chatbox .incoming p', bgColor, color);
-    setElementColor('.chatbox .outgoing', bgColor, color);
+    setElementColor('.chatbox .outgoing p', bgColor, color);
     setElementColor('.chatbox .chat p', bgColor, color);
 
     const handleChat = () => {
