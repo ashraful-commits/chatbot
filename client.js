@@ -13,10 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
     const prompt = urlParams.get('prompt');
     setElementColor('.chatbot header', bgColor, color);
-    setElementColor('.chatbox .incoming span', bgColor, color);
-    setElementColor('.chatbox .incoming p', bgColor, color);
-    setElementColor('.chatbox .outgoing p', bgColor, color);
-    setElementColor('.chatbox .chat p', bgColor, color);
+  
 
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
