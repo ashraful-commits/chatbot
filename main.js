@@ -3,7 +3,7 @@
 const API_KEY = "YOUR_API_KEY"; // Replace with your OpenAI API key
 
 // Function to generate a response using ChatGPT
-export const generateChatGPTResponse = (chatElement, userMessage, chatGPTPrompt) => {
+export const generateResponse = (chatElement, userMessage, chatGPTPrompt) => {
     const API_URL = "https://api.openai.com/v1/completions";
 
     // Get the message element where the response will be displayed

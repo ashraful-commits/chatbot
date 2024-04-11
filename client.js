@@ -1,8 +1,8 @@
 
-import { generateChatGPTResponse,
+import { generateResponse,
     createChatLi,
     setElementColor } from './main.js';
-const chatbotToggler = document.querySelector(".chatbot-toggler");
+
 const closeBtn = document.querySelector(".close-btn");
 const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
@@ -24,12 +24,12 @@ const handleChat = () => {
   chatbox.scrollTo(0, chatbox.scrollHeight);
   
   setTimeout(() => {
-    const incomingChatLi = createChatLi("Thinking...", "incoming");
-    chatbox.appendChild(incomingChatLi);
-    chatbox.scrollIntoView({ behavior: "smooth", block: "end" });
-    const chatGPTPrompt = "CHATGPT Prompt: " + userMessage; // Construct the ChatGPT prompt
-    generateChatGPTResponse(incomingChatLi, userMessage, chatGPTPrompt); // Pass the ChatGPT prompt
-}, 600);
+      // Display "Thinking..." message while waiting for the response
+      const incomingChatLi = createChatLi("Thinking...", "incoming");
+      chatbox.appendChild(incomingChatLi);
+      chatbox.scrollTo(0, chatbox.scrollHeight);
+      generateResponse(incomingChatLi,userMessage);
+  }, 600);
 }
 
 chatInput.addEventListener("input", () => {
@@ -49,4 +49,4 @@ chatInput.addEventListener("keydown", (e) => {
 
 sendChatBtn.addEventListener("click", handleChat);
 closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
-chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
+
