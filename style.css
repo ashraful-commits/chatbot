@@ -1,22 +1,25 @@
 /* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  position: relative; /* Ensure relative positioning for proper positioning of absolute elements */
+}
+
+body {
+  background: none;
 }
 
 .chatbot-toggler {
-  position: fixed; /* Fixed positioning relative to viewport */
-  bottom: 3%;
-  right: 3%;
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
   outline: none;
   border: none;
-  height: 5%;
-  width: 5%;
+  height: 50px;
+  width: 50px;
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -24,7 +27,6 @@ body {
   border-radius: 50%;
   background: #724ae8;
   transition: all 0.2s ease;
-  z-index: 9999; /* Ensure it's above other content */
 }
 
 body.show-chatbot .chatbot-toggler {
@@ -46,13 +48,11 @@ body.show-chatbot .chatbot-toggler span:last-child {
 }
 
 .chatbot {
-  position: fixed; /* Fixed positioning relative to viewport */
-  right: 3%;
-  bottom: 8%;
-  width: 94%;
-  height: 82%;
-  max-width: 420px;
-  max-height: 550px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%; /* Adjusted width */
+  height: 100%; /* Adjusted height */
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -63,7 +63,6 @@ body.show-chatbot .chatbot-toggler span:last-child {
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
               0 32px 64px -48px rgba(0,0,0,0.5);
   transition: all 0.1s ease;
-  z-index: 9998; /* Ensure it's above other content but below toggle button */
 }
 
 body.show-chatbot .chatbot {
@@ -96,7 +95,6 @@ header h2 {
 
 .chatbot .chatbox {
   overflow-y: auto;
-  height: 75%;
   padding: 30px 20px 100px;
 }
 
@@ -120,7 +118,6 @@ header h2 {
 }
 
 .chatbox .outgoing {
-  margin: 20px 0;
   justify-content: flex-end;
 }
 
@@ -164,8 +161,6 @@ header h2 {
 .chatbot .chat-input {
   display: flex;
   gap: 5px;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   background: #fff;
   padding: 3px 20px;
@@ -200,19 +195,16 @@ header h2 {
 
 @media (max-width: 490px) {
   .chatbot-toggler {
-    right: 3%;
-    bottom: 3%;
-    height: 10%;
-    width: 10%;
+    right: 20px;
+    bottom: 20px;
   }
   .chatbot {
-    right: 3%;
-    bottom: 15%;
-    height: 82%;
-    width: 94%;
+    height: auto; /* Adjusted height */
+    border-radius: 0;
+    width: 100%;
   }
   .chatbot .chatbox {
-    height: 75%;
+    height: calc(100% - 140px); /* Adjusted height */
     padding: 25px 15px 100px;
   }
   .chatbot .chat-input {
