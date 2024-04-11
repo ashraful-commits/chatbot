@@ -1,5 +1,5 @@
 
-const chatbox = chatbot.querySelector(".chatbox");
+const chatbox = document.querySelector(".chatbox");
 const API_KEY = "YOUR_API_KEY"; // Replace with your OpenAI API key
 
 // Function to generate a response using ChatGPT
