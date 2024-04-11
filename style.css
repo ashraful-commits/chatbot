@@ -6,16 +6,17 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  position: relative; /* Ensure relative positioning for proper positioning of absolute elements */
 }
 
 .chatbot-toggler {
-  position: fixed;
-  bottom: 30px;
-  right: 35px;
+  position: fixed; /* Fixed positioning relative to viewport */
+  bottom: 3%;
+  right: 3%;
   outline: none;
   border: none;
-  height: 50px;
-  width: 50px;
+  height: 5%;
+  width: 5%;
   display: flex;
   cursor: pointer;
   align-items: center;
@@ -23,6 +24,7 @@ body {
   border-radius: 50%;
   background: #724ae8;
   transition: all 0.2s ease;
+  z-index: 9999; /* Ensure it's above other content */
 }
 
 body.show-chatbot .chatbot-toggler {
@@ -44,11 +46,13 @@ body.show-chatbot .chatbot-toggler span:last-child {
 }
 
 .chatbot {
-  position: fixed;
-  right: 35px;
-  bottom: 90px;
-  width: 420px;
-  height: 550px;
+  position: fixed; /* Fixed positioning relative to viewport */
+  right: 3%;
+  bottom: 8%;
+  width: 94%;
+  height: 82%;
+  max-width: 420px;
+  max-height: 550px;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
@@ -59,6 +63,7 @@ body.show-chatbot .chatbot-toggler span:last-child {
   box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
               0 32px 64px -48px rgba(0,0,0,0.5);
   transition: all 0.1s ease;
+  z-index: 9998; /* Ensure it's above other content but below toggle button */
 }
 
 body.show-chatbot .chatbot {
@@ -91,7 +96,7 @@ header h2 {
 
 .chatbot .chatbox {
   overflow-y: auto;
-  height: 510px;
+  height: 75%;
   padding: 30px 20px 100px;
 }
 
@@ -195,18 +200,19 @@ header h2 {
 
 @media (max-width: 490px) {
   .chatbot-toggler {
-    right: 20px;
-    bottom: 20px;
+    right: 3%;
+    bottom: 3%;
+    height: 10%;
+    width: 10%;
   }
   .chatbot {
-    right: 0;
-    bottom: 0;
-    height: 550px;
-    border-radius: 0;
-    width: 100%;
+    right: 3%;
+    bottom: 15%;
+    height: 82%;
+    width: 94%;
   }
   .chatbot .chatbox {
-    height: 90%;
+    height: 75%;
     padding: 25px 15px 100px;
   }
   .chatbot .chat-input {
