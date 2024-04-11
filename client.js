@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setElementColor('.chatbox .incoming span', bgColor, color);
     setElementColor('.chatbox .incoming p', bgColor, color);
     setElementColor('.chatbox .outgoing', bgColor, color);
+    setElementColor('.chatbox .chat p', bgColor, color);
 
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
