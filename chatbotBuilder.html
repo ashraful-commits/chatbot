@@ -3,22 +3,89 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Chatbot Builder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+    .container {
+      position: relative; /* Added */
+      z-index: 1; /* Added */
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="color"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    iframe {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; /* Changed */
+    }
+  </style>
+  <script src="chatbotBuilder.js"></script>
 </head>
 <body>
-  <script src="chatbotBuilder.js"></script>
-
-  <!-- Your chatbot builder form -->
-  <h1>Chatbot Builder</h1>
-  <form onsubmit="event.preventDefault(); onSubmitForm();">
-      <label for="prompt">Prompt:</label><br>
-      <input type="text" id="prompt" name="prompt"><br>
-      <label for="color">Color:</label><br>
-      <input type="text" id="color" name="color"><br>
-      <label for="firstMessage">First Message:</label><br>
-      <input type="text" id="firstMessage" name="firstMessage"><br><br>
-      <button type="submit">Generate Embed Code</button>
-  </form>
-  <textarea id="embedCode" rows="4" cols="50" readonly></textarea>
+  <div class="container">
+    <h1>Chatbot Builder</h1>
+    <form onsubmit="event.preventDefault(); onSubmitForm();">
+        <label for="prompt">Prompt:</label>
+        <input type="text" id="prompt" name="prompt">
+        <label for="bgColor">Background Color:</label>
+        <input type="color" id="bgColor" name="bgColor">
+        <label for="color">Text Color:</label>
+        <input type="color" id="color" name="color">
+        <label for="firstMessage">First Message:</label>
+        <input type="text" id="firstMessage" name="firstMessage">
+        <button type="submit">Generate Embed Code</button>
+    </form>
+    <textarea id="embedCode" rows="4" cols="50" readonly></textarea>
+  </div>
+  <iframe src="chatbot.html"></iframe>
 </body>
 </html>

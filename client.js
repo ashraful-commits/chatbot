@@ -11,6 +11,7 @@ let userMessage = null; // Variable to store user's message
 const inputInitHeight = chatInput.scrollHeight;
 
 setElementColor('.chatbot header', bgColor, color);
+setElementColor('.chatbot-toggler', bgColor, color);
 const handleChat = () => {
   userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
   if(!userMessage) return;
