@@ -2,7 +2,7 @@
 import { generateResponse,
     createChatLi,
     setElementColor } from './main.js';
-
+    document.addEventListener("DOMContentLoaded", function() {
 const closeBtn = document.querySelector(".close-btn");
 const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
@@ -55,3 +55,4 @@ chatInput.addEventListener("keydown", (e) => {
 sendChatBtn.addEventListener("click", handleChat);
 closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 
+    }
