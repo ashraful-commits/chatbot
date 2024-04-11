@@ -9,7 +9,12 @@ const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 let userMessage = null; // Variable to store user's message
 const inputInitHeight = chatInput.scrollHeight;
-
+const urlParams = new URLSearchParams(window.location.search);
+const bgColor = urlParams.get('bgColor') || 'purple';
+const color = urlParams.get('color') || 'purple';
+const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
+const prompt = urlParams.get('prompt');
+setElementColor('.chat-header',bgColor,color)
 
 const handleChat = () => {
   userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
