@@ -22,7 +22,7 @@ const createChatbotUI = () => {
                         <ul class="chatbox">
                             <li class="chat incoming">
                                 <span class="material-symbols-outlined">smart_toy</span>
-                                <p>Hi there 👋<br>How can I help you today?</p>
+                                <p>${firstMessage}</p>
                             </li>
                         </ul>
                         <div class="chat-input">
