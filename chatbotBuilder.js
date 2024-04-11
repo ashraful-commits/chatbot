@@ -8,8 +8,8 @@ function generateEmbedCode(prompt, color, firstMessage) {
   const encodedFirstMessage = encodeURIComponent(firstMessage);
 
   const embedCode = `
-      <iframe src="${chatbotUrl}?prompt=${encodedPrompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" 
-          width="100%" height="950px" frameborder="0" style="background-color:none; position: fixed; bottom: 10px; right:10px;"></iframe>
+  <iframe src="${chatbotUrl}?prompt=${encodedPrompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" 
+  width="100%" height="950px" frameborder="0" style="position: fixed; bottom: 10px; right: 10px;"></iframe>
   `;
 
   return embedCode;
