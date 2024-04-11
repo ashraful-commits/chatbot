@@ -8,8 +8,10 @@ function generateEmbedCode(prompt, color, firstMessage) {
   const encodedFirstMessage = encodeURIComponent(firstMessage);
 
   const embedCode = `
-  <iframe src="https://chatbot-ruby-five.vercel.app?prompt=asdfdf&bgColor=%5Bobject%20HTMLInputElement%5D&color=%23d51a1a&message=%231e29c2" 
+  onst embedCode = `
+  <iframe src="${chatbotUrl}?prompt=${encodedPrompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" 
   width="300px" height="500px" frameborder="0" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:750px; width:100%"></iframe>
+  `;
   `;
 
   return embedCode;
@@ -21,7 +23,7 @@ function onSubmitForm() {
   const bgColor = document.getElementById('bgColor').value;
   const color = document.getElementById('color').value;
   const firstMessage = document.getElementById('firstMessage').value;
-
+console.log(prompt,bgColor,color,firstMessage)
   // Generate embed code or perform other actions
   const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage);
   document.getElementById('embedCode').value = embedCode;
