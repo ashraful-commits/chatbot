@@ -1,50 +1,43 @@
-// main.js
+const chatInput = document.querySelector(".chat-input textarea");
 const chatbox = document.querySelector(".chatbox");
+const API_KEY = "API KEY"; // Paste your API key here
 
-const API_KEY = "INSERT YOUR API KEY HERE"
-// Parse URL parameters
-const urlParams = new URLSearchParams(window.location.search);
-const bgColor = urlParams.get('bgColor') || 'purple';
-const fontColor = urlParams.get('fontColor') || 'white';
-const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
-
-// Function to create chat messages
-export const createChatLi = (message, className,bgColor,color,iconBgColor,iconColor) => {
+export const createChatLi = (message, className) => {
+    // Create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");
-    chatLi.classList.add("chat", className);
-    const chatContent = className === "outgoing" ? `<p style="background-color: ${bgColor}; color:${color};">${message}</p>` : `<span style="background-color: ${iconBgColor};color:${iconColor}" class="material-symbols-outlined">smart_toy</span><p>${message}</p>`;
+    chatLi.classList.add("chat", `${className}`);
+    let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
     chatLi.innerHTML = chatContent;
-    return chatLi;
+    chatLi.querySelector("p").textContent = message;
+    return chatLi; // return chat <li> element
 }
 
-// Function to generate chatbot response
-export const generateResponse = (chatElement, userMessage) => {
+export const generateResponse = (chatElement,userMessage) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
 
+    // Define the properties and message for the API request
     const requestOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}` // Use client's API key
+            "Authorization": `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo",
             messages: [{role: "user", content: userMessage}],
         })
-    };
+    }
 
-    fetch(API_URL, requestOptions)
-        .then(res => res.json())
-        .then(data => {
-            messageElement.textContent = data.choices[0].message.content.trim();
-        })
-        .catch(() => {
-            messageElement.classList.add("error");
-            messageElement.textContent = "Oops! Something went wrong. Please try again.";
-        })
-        .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+    // Send POST request to API, get response and set the reponse as paragraph text
+    fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
+        messageElement.textContent = data.choices[0].message.content.trim();
+    }).catch(() => {
+        messageElement.classList.add("error");
+        messageElement.textContent = "Oops! Something went wrong. Please try again.";
+    }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 }
+// main.js
 
 // Function to set element colors
 export const setElementColor = (elementSelector, backgroundColor, color) => {
@@ -55,8 +48,4 @@ export const setElementColor = (elementSelector, backgroundColor, color) => {
     } else {
         console.error(`Element with selector '${elementSelector}' not found.`);
     }
-}
-
-// Initialize chatbot with customizations
-setElementColor('.chatbot header', bgColor, fontColor);
-document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
+};

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="chatbotBuilder.js"></script>
+
+  <!-- Your chatbot builder form -->
+  <h1>Chatbot Builder</h1>
+  <form onsubmit="event.preventDefault(); onSubmitForm();">
+      <label for="prompt">Prompt:</label><br>
+      <input type="text" id="prompt" name="prompt"><br>
+      <label for="color">Color:</label><br>
+      <input type="text" id="color" name="color"><br>
+      <label for="firstMessage">First Message:</label><br>
+      <input type="text" id="firstMessage" name="firstMessage"><br><br>
+      <button type="submit">Generate Embed Code</button>
+  </form>
+  <textarea id="embedCode" rows="4" cols="50" readonly></textarea>
+</body>
+</html>

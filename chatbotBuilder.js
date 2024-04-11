@@ -1,7 +1,7 @@
 // chatbotBuilder.js
 
 function generateEmbedCode(prompt, color, firstMessage) {
-  const chatbotUrl = "YOUR_CHATBOT_URL";
+  const chatbotUrl = "https://chatbot-ruby-five.vercel.app/index.html";
   const encodedPrompt = encodeURIComponent(prompt);
   const encodedColor = encodeURIComponent(color);
   const encodedFirstMessage = encodeURIComponent(firstMessage);

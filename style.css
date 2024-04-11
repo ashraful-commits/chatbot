@@ -8,7 +8,7 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background: transparent;
+  background: none;
   width: 50px;
   height: 50px;
 }
@@ -16,7 +16,6 @@ body {
   position: fixed;
   bottom: 30px;
   right: 35px;
-
   outline: none;
   border: none;
   height: 50px;
@@ -46,12 +45,12 @@ body.show-chatbot .chatbot-toggler span:last-child {
 .chatbot {
   position: fixed;
   right: 35px;
-  z-index: 99999999;
-  bottom: 100px;
+  bottom: 90px;
   width: 420px;
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
+  opacity: 0;
   pointer-events: none;
   transform: scale(0.5);
   transform-origin: bottom right;
@@ -103,29 +102,11 @@ header h2 {
   display: flex;
   list-style: none;
 }
-
 .chatbox .outgoing {
   margin: 20px 0;
   justify-content: flex-end;
 }
-.chatbox .chat p {
-  color:white;
-  background-color: red;
-  padding:10px;
-  border-radius: 10px 10px 0 10px;
-}
-.chatbox li:first-child .material-symbols-outlined {
-  color:white;
-  background-color: red;
-
-}
-.chatbox li:first-child p {
-  color:white;
-  background-color: #724ae8;
-  padding:10px;
-  border-radius: 10px 10px 0 10px;
-}
- .chatbox .incoming span  {
+.chatbox .incoming span {
   width: 32px;
   height: 32px;
   color: #fff;
@@ -133,37 +114,28 @@ header h2 {
   text-align: center;
   line-height: 32px;
   align-self: flex-end;
-  background: #724ae8 ;
+  background: #724ae8;
   border-radius: 4px;
   margin: 0 10px 7px 0;
 }
+.chatbox .chat p {
+  white-space: pre-wrap;
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 10px;
+  max-width: 75%;
+  color: #fff;
+  font-size: 0.95rem;
+  background: #724ae8;
+}
 .chatbox .incoming p {
-  white-space: pre-wrap;
-  padding: 12px 16px;
-  border-radius: 10px 10px 0 10px;
-  max-width: 75%;
-  color: #fff;
-  font-size: 0.95rem;
-  background: #724ae8;
-}
-.chatbox .outgoing p {
-  white-space: pre-wrap;
-  padding: 12px 16px;
-  border-radius: 10px 10px 0 10px;
-  max-width: 75%;
-  color: #fff;
-  font-size: 0.95rem;
-  background: #724ae8;
-}
-/* .chatbox .incoming p {
   border-radius: 10px 10px 10px 0;
-} */
+}
 .chatbox .chat p.error {
-  color: black;
+  color: #721c24;
   background: #f8d7da;
 }
 .chatbox .incoming p {
-  color: white;
+  color: #000;
   background: #f2f2f2;
 }
 .chatbot .chat-input {
@@ -175,23 +147,17 @@ header h2 {
   background: #fff;
   padding: 3px 20px;
   border-top: 1px solid #ddd;
-  
 }
-.chatbot .chat-input textarea {
+.chat-input textarea {
   height: 55px;
   width: 100%;
   border: none;
   outline: none;
   resize: none;
   max-height: 180px;
-  padding: 15px 15px 15px 10px;
+  padding: 15px 15px 15px 0;
   font-size: 0.95rem;
-  border-radius: 5px;
-  background-color: white !important;
-  color:black !important;
- 
 }
-
 .chat-input span {
   align-self: flex-end;
   color: #724ae8;
@@ -212,13 +178,11 @@ header h2 {
     bottom: 20px;
   }
   .chatbot {
-    position: fixed;
-    z-index: 99999999;
-    right: 25px;
-    bottom: 68px;
-    min-height: 500px;
-    border-radius: 10px;
-    min-width: 420px;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
   }
   .chatbot .chatbox {
     height: 90%;
@@ -231,47 +195,3 @@ header h2 {
     display: block;
   }
 }
-/* width */
-/* Works for Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-}
-
-/* Track */
-/* Works for Firefox */
-*::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-/* Works for Firefox */
-*::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-/* Works for Firefox */
-*::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* Works for Firefox */
-/* Track */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-}
-
-/* Handle */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-}
-
-/* Handle on hover */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #555 #f1f1f1;
-}
-

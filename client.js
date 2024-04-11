@@ -1,80 +1,51 @@
-import { createChatLi, generateResponse, setElementColor } from './main.js';
+const urlParams = new URLSearchParams(window.location.search);
+const color = urlParams.get('color') || 'purple';
+import { createChatLi, generateResponse,setElementColor } from './main.js';
+const chatbotToggler = document.querySelector(".chatbot-toggler");
+const closeBtn = document.querySelector(".close-btn");
+const chatbox = document.querySelector(".chatbox");
+const chatInput = document.querySelector(".chat-input textarea");
+const sendChatBtn = document.querySelector(".chat-input span");
+let userMessage = null; // Variable to store user's message
+const inputInitHeight = chatInput.scrollHeight;
 
-document.addEventListener("DOMContentLoaded", () => {
-    const chatInput = document?.getElementById("usermessage");
-    const chatbox = document.querySelector(".chatbox"); // Declare chatbox variable
-    // Parse URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialMessage = urlParams.get('initialMessage') || 'Hi there! How can I assist you today?';
-    const chatHeaderBgColor = urlParams.get('chatHeaderBgColor') || 'purple';
-    const chatHeaderFontColor = urlParams.get('chatHeaderFontColor') || 'white';
-    const chatTogglerBgColor = urlParams.get('chatTogglerBgColor') || 'purple';
-    const chatTogglerFontColor = urlParams.get('chatTogglerFontColor') || 'white';
-    const chatMessageBgColor = urlParams.get('chatMessageBgColor') || '#f1f1f1';
-    const chatMessageFontColor = urlParams.get('chatMessageFontColor') || 'black';
-    const chatBoxBgColor = urlParams.get('chatBoxBgColor') || 'white';
-    const chatBoxFontColor = urlParams.get('chatBoxFontColor') || 'black';
-    const chatInputBgColor = urlParams.get('chatInputBgColor') || 'purple';
-    const chatInputFontColor = urlParams.get('chatInputFontColor') || 'white';
-    const sendBtnFontColor = urlParams.get('sendBtnFontColor') || 'white';
-    const incomingListBgColor = urlParams.get('incomingListBgColor') || 'purple';
-    const incomingListFontColor = urlParams.get('incomingListFontColor') || 'white';
-    const incomingListErrorBgColor = urlParams.get('incomingListErrorBgColor') || 'purple'; // Fixed typo
-    const incomingListErrorFontColor = urlParams.get('incomingListErrorFontColor') || 'white'; // Fixed typo
-    const outgoingListBgColor = urlParams.get('outgoingListBgColor') || 'purple';
-    const outgoingListFontColor = urlParams.get('outgoingListFontColor') || 'white';
-    const iconBgColor = urlParams.get('iconBgColor') || 'purple';
-    const iconColor = urlParams.get('iconColor') || 'white';
-    const bodyWidth = urlParams.get('bodyWidth') || '50px';
-    const bodyHeight = urlParams.get('bodyHeight') || '50px';
+setElementColor('.chatbot header', color, color);
+const handleChat = () => {
+  userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
+  if(!userMessage) return;
 
-    // Set colors dynamically
-    setElementColor('.chatbot header', chatHeaderBgColor, chatHeaderFontColor);
-    setElementColor('.chatbox .chat p', chatMessageBgColor, chatMessageFontColor);
-    setElementColor('.chatbox li:first-child p', incomingListErrorBgColor, incomingListErrorFontColor);
-    setElementColor('.chatbox li:first-child .material-symbols-outlined', iconBgColor, iconColor);
-    setElementColor('.chatbox', chatBoxBgColor, chatBoxFontColor);
-    setElementColor('.chatbot .chat-input', chatInputBgColor, chatInputFontColor);
-    setElementColor('.chatbot textarea', chatBoxBgColor, chatBoxFontColor);
-    setElementColor('.chat-input span', '', sendBtnFontColor);
+  // Clear the input textarea and set its height to default
+  chatInput.value = "";
+  chatInput.style.height = `${inputInitHeight}px`;
 
-    // Set prompt and first message
-    document.querySelector(".chatbox li:first-child p").innerHTML = initialMessage;
+  // Append the user's message to the chatbox
+  chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+  chatbox.scrollTo(0, chatbox.scrollHeight);
+  
+  setTimeout(() => {
+      // Display "Thinking..." message while waiting for the response
+      const incomingChatLi = createChatLi("Thinking...", "incoming");
+      chatbox.appendChild(incomingChatLi);
+      chatbox.scrollTo(0, chatbox.scrollHeight);
+      generateResponse(incomingChatLi,userMessage);
+  }, 600);
+}
 
-    const handleChat = () => {
-        const userMessage = chatInput?.value.trim();
-        if (!userMessage) return;
-
-        chatInput.value = "";
-
-        chatbox.appendChild(createChatLi(userMessage, "outgoing", outgoingListBgColor, outgoingListFontColor, iconBgColor, iconColor));
-        chatbox.scrollTo(0, chatbox.scrollHeight);
-
-        setTimeout(() => {
-            const incomingChatLi = createChatLi("Thinking...", "incoming", incomingListBgColor, incomingListFontColor, iconBgColor, iconColor);
-            chatbox.appendChild(incomingChatLi);
-            chatbox.scrollTo(0, chatbox.scrollHeight);
-            generateResponse(incomingChatLi, userMessage);
-        }, 600);
-    }
-
-    document.getElementById("send-btn").addEventListener("click", handleChat);
-    chatInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
-            e.preventDefault();
-            handleChat();
-        }
-    });
-
-
-    const closeBtn = document.querySelector(".close-btn");
-
-    // Declare closeBtn and chatbotToggler variables before using them
-    closeBtn.addEventListener("click", () => {
-        document.body.classList.remove("show-chatbot");
-        document.body.style.width = "0px";
-        document.body.style.height = "0px";
-    });
-
-
+chatInput.addEventListener("input", () => {
+  // Adjust the height of the input textarea based on its content
+  chatInput.style.height = `${inputInitHeight}px`;
+  chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
+
+chatInput.addEventListener("keydown", (e) => {
+  // If Enter key is pressed without Shift key and the window 
+  // width is greater than 800px, handle the chat
+  if(e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+      e.preventDefault();
+      handleChat();
+  }
+});
+
+sendChatBtn.addEventListener("click", handleChat);
+closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
+chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
