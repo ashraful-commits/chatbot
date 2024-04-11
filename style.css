@@ -45,8 +45,8 @@ body.show-chatbot .chatbot-toggler span:last-child {
 .chatbot {
   position: fixed;
   z-index: 9999999;
-  right: 35px;
-  bottom: 90px;
+  right: 10px;
+  bottom: 10px;
   width: 420px;
   height: 550px;
   background: #fff;
@@ -183,8 +183,8 @@ header h2 {
   }
   .chatbot {
     z-index: 9999999;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
     height: 550px;
 
     border-radius: 0;
