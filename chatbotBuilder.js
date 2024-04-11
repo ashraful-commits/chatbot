@@ -1,6 +1,6 @@
 // chatbotBuilder.js
 
-function generateEmbedCode(prompt, color, firstMessage) {
+function generateEmbedCode(prompt, bgColor, color, firstMessage) {
   const chatbotUrl = "https://chatbot-ruby-five.vercel.app/chatbot.html";
   const encodedPrompt = encodeURIComponent(prompt);
   const encodedColor = encodeURIComponent(color); // Changed variable name to encodedColor
@@ -8,7 +8,7 @@ function generateEmbedCode(prompt, color, firstMessage) {
   const encodedFirstMessage = encodeURIComponent(firstMessage);
 
   const embedCode = `
-  <iframe src="${chatbotUrl}?prompt=${encodedPrompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" 
+  <iframe src="${chatbotUrl}?prompt=${prompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" 
   width="300px" height="500px" frameborder="0" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:750px; width:100%"></iframe>
 `;
 
@@ -27,3 +27,9 @@ function onSubmitForm() {
 }
 
 
+function copyEmbedCode() {
+  const textarea = document.getElementById('embedCode');
+  textarea.select();
+  document.execCommand('copy');
+  alert('Embed code copied to clipboard!');
+}
