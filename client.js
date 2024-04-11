@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const prompt = urlParams.get('prompt');
     setElementColor('.chatbot header', bgColor, color);
   
-
+    chatbox.appendChild(firstMessage)
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
         if (!userMessage) return;
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Append the user's message to the chatbox
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
         chatbox.scrollTo(0, chatbox.scrollHeight);
-
+         
         setTimeout(() => {
             // Display "Thinking..." message while waiting for the response
             const incomingChatLi = createChatLi("Thinking...", "incoming");
