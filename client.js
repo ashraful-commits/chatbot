@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatInput = document.querySelector(".chat-input textarea");
     const sendChatBtn = document.querySelector(".chat-input span");
     let userMessage = null; // Variable to store user's message
-    // const inputInitHeight = chatInput.scrollHeight;
     const urlParams = new URLSearchParams(window.location.search);
     const bgColor = urlParams.get('bgColor') || 'purple';
     const color = urlParams.get('color') || 'purple';
@@ -14,14 +13,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const prompt = urlParams.get('prompt');
     setElementColor('.chatbot header', bgColor, color);
   
-    chatbox.appendChild(firstMessage)
+    // Append the first message to the chatbox
+    chatbox.innerHTML = ""; // Clear previous content
+    chatbox.appendChild(createChatLi(firstMessage, "incoming"));
+
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
         if (!userMessage) return;
 
-        // Clear the input textarea and set its height to default
+        // Clear the input textarea
         chatInput.value = "";
-        // chatInput.style.height = `${inputInitHeight}px`;
 
         // Append the user's message to the chatbox
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
@@ -38,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     chatInput.addEventListener("input", () => {
         // Adjust the height of the input textarea based on its content
-        // chatInput.style.height = `${inputInitHeight}px`;
         chatInput.style.height = `${chatInput.scrollHeight}px`;
     });
 
