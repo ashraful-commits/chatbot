@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let userMessage = null; // Variable to store user's message
     const urlParams = new URLSearchParams(window.location.search);
     const bgColor = urlParams.get('bgColor') || 'purple';
-    const color = urlParams.get('color') || 'purple';
+    const color = urlParams.get('color') || 'white';
     const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
     const prompt = urlParams.get('prompt');
     setElementColor('.chatbot header', bgColor, color);

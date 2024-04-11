@@ -30,7 +30,7 @@ function generateEmbedCode(prompt, bgColor, color, firstMessage) {
       if (display === 'none') {
         showIcon.setAttribute('d', 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z');
       } else {
-        showIcon.setAttribute('d', 'M3 3h18v18H3V3zm0 0l9 9 9-9M12 17V7');
+        showIcon.setAttribute('d', 'M18 6 L6 18 M6 6 L18 18');
       }
     }
   </script>
