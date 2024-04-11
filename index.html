@@ -5,11 +5,28 @@
     <meta charset="utf-8">
     <title>Chatbot in JavaScript | CodingNepal</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chatbotBuilder.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
   </head>
   <body>
+    <div class="container">
+      <h1>Chatbot Builder</h1>
+      <form onsubmit="event.preventDefault(); onSubmitForm();">
+          <label for="prompt">Prompt:</label>
+          <input type="text" id="prompt" name="prompt">
+          <label for="bgColor">Background Color:</label>
+          <input type="color" id="bgColor" name="bgColor">
+          <label for="color">Text Color:</label>
+          <input type="color" id="color" name="color">
+          <label for="firstMessage">First Message:</label>
+          <input type="text" id="firstMessage" name="firstMessage">
+          <button type="submit">Generate Embed Code</button>
+      </form>
+      <textarea id="embedCode" rows="4" cols="50" readonly></textarea>
+    </div>
     
+    <script src="chatbotBuilder.js" defer></script>
     <script src="client.js" defer type="module"></script>
   </body>
 </html>

@@ -8,7 +8,7 @@ function generateEmbedCode(prompt, color, firstMessage) {
   const encodedFirstMessage = encodeURIComponent(firstMessage);
 
   const embedCode = `
-  <iframe src="https://chatbot-ruby-five.vercel.app/index.html?prompt=asdfdf&bgColor=%5Bobject%20HTMLInputElement%5D&color=%23d51a1a&message=%231e29c2" 
+  <iframe src="https://chatbot-ruby-five.vercel.app?prompt=asdfdf&bgColor=%5Bobject%20HTMLInputElement%5D&color=%23d51a1a&message=%231e29c2" 
   width="300px" height="500px" frameborder="0" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:750px; width:100%"></iframe>
   `;
 

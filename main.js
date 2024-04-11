@@ -57,4 +57,14 @@ export const createChatLi = (message, className) => {
     return chatLi;
 };
 
-// Other code...
+
+// Function to set element colors
+export const setElementColor = (elementSelector, backgroundColor, color) => {
+    const element = document.querySelector(elementSelector);
+    if (element) {
+        element.style.backgroundColor = backgroundColor;
+        element.style.color = color;
+    } else {
+        console.error(`Element with selector '${elementSelector}' not found.`);
+    }
+};
