@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
-const color = urlParams.get('color') || 'purple';
+const color = urlParams.get('color') || 'white';
+const bgColor = urlParams.get('bgColor') || 'purple';
 import { createChatLi, generateResponse,setElementColor } from './main.js';
 const chatbotToggler = document.querySelector(".chatbot-toggler");
 const closeBtn = document.querySelector(".close-btn");
@@ -9,7 +10,7 @@ const sendChatBtn = document.querySelector(".chat-input span");
 let userMessage = null; // Variable to store user's message
 const inputInitHeight = chatInput.scrollHeight;
 
-setElementColor('.chatbot header', color, color);
+setElementColor('.chatbot header', bgColor, color);
 const handleChat = () => {
   userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
   if(!userMessage) return;
