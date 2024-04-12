@@ -2,6 +2,11 @@ import  {clientConfigurations } from "./main.js"
 console.log(clientConfigurations)
 // chatbotBuilder.js
 function addClientConfiguration(clientName, config) {
+  if (clientConfigurations.hasOwnProperty(clientName)) {
+    alert("Client name already exists!");
+    return; // Exit the function early if client name already exists
+  }
+  
   clientConfigurations[clientName] = config;
   localStorage.setItem("clients", JSON.stringify(clientConfigurations));
 }
@@ -15,7 +20,7 @@ function generateEmbedCode(prompt, bgColor, color, firstMessage,clientName) {
   // Example usage:
 
   const embedCode = `
-    <iframe id="iframe" src="${chatbotUrl}?client=${clientName} style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
+    <iframe id="iframe" src="${chatbotUrl}?client=${clientName}" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
     
     <button id="button" style="position: fixed; bottom: 50px; right: 50px; border-radius: 100%; padding: 10px; width: 50px; height: 50px; border: none; background: ${bgColor}; color: ${color}; display: flex; justify-content: center; align-items: center; z-index: 999999;" onclick="toggleIframe()">
     <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
