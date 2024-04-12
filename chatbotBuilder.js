@@ -1,9 +1,9 @@
-import  {clientConfigurations } from "./main.js"
+
 
 
 
 function addClientConfiguration(clientName, config) {
-  
+  const clientConfigurations =JSON.parse(localStorage.getItem(("clients")))
   if (clientConfigurations.hasOwnProperty(clientName)) {
     alert("Client name already exists!");
     return; // Exit the function early if client name already exists
