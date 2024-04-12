@@ -3,7 +3,7 @@
 const API_KEY = "YOUR_API_KEY"; // Replace with your OpenAI API key
 
 // Function to generate a response using ChatGPT
-export const generateResponse = (chatElement, userMessage, chatGPTPrompt,token) => {
+export const generateResponse = (chatElement, userMessage, chatGPTPrompt) => {
     const API_URL = "https://api.openai.com/v1/completions";
 
     // Get the message element where the response will be displayed
@@ -31,7 +31,7 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt,token) 
             stop: "\n"
         })
     };
-  if(token !==null){
+  console.log(token)
 
       // Send the POST request to the OpenAI API
       fetch(API_URL, requestOptions)
@@ -53,7 +53,7 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt,token) 
               messageElement.classList.add("error");
               messageElement.textContent = "Oops! Something went wrong. Please try again.";
           });
-  }
+  
 };
 
 // Define and export the createChatLi function

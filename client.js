@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const clientId = urlParams.get('client') ||'client1';
     const token = urlParams.get('token')
+
     const config =fetchClientConfig(clientId) 
     setElementColor('.chatbot header', config.bgColor, config.color);
   
@@ -33,8 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const incomingChatLi = createChatLi("Thinking...", "incoming");
                 chatbox.appendChild(incomingChatLi);
                 chatbox.scrollTo(0, chatbox.scrollHeight);
-                if(token==config.token){
-                    generateResponse(incomingChatLi, userMessage,config.prompt,config.token);
+                if(token===config.token){
+                    generateResponse(incomingChatLi, userMessage,config.prompt);
                 }
             }, 600);
          }
