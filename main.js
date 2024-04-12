@@ -80,7 +80,7 @@ export const setElementColor = (elementSelector, backgroundColor, color) => {
 
 // Function to fetch client configuration based on client ID
 export function fetchClientConfig(clientName) {
-    const clientConfigurations =JSON.parse(localStorage.getItem(("clients")))
+    const clientConfigurations =JSON.parse(localStorage.getItem(("clients"))) || {}
     // Check if client configuration exists for the given client ID
     if (clientConfigurations?.hasOwnProperty(clientName)) {
         return clientConfigurations[clientName];

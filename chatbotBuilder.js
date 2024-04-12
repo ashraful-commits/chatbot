@@ -10,7 +10,7 @@ function generateEmbedCode(prompt, bgColor, color, firstMessage,clientName) {
 
   const embedCode = `
     <iframe id="iframe" src="${chatbotUrl}?client=${clientName}" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
-    
+   
     <button id="button" style="position: fixed; bottom: 50px; right: 50px; border-radius: 100%; padding: 10px; width: 50px; height: 50px; border: none; background: ${bgColor}; color: ${color}; display: flex; justify-content: center; align-items: center; z-index: 999999;" onclick="toggleIframe()">
     <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path id="showIcon" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
@@ -52,7 +52,7 @@ window.onSubmitForm = function() {
     message: firstMessage || "Hi, how can I help you?", 
     prompt: prompt || "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"
   };
-  const clientConfigurations =JSON.parse(localStorage.getItem(("clients")))
+  const clientConfigurations =JSON.parse(localStorage.getItem(("clients"))) ||{}
   
   // Check if the client already exists
   if (clientConfigurations.hasOwnProperty(clientName)) {
