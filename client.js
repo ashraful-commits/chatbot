@@ -1,4 +1,4 @@
-import { generateResponse, createChatLi, setElementColor, fetchClientConfig } from './main.js';
+import { generateResponse, createChatLi, setElementColor,fetchClientConfig } from './main.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.querySelector(".close-btn");
@@ -8,57 +8,53 @@ document.addEventListener("DOMContentLoaded", function() {
     let userMessage = null; // Variable to store user's message
     const urlParams = new URLSearchParams(window.location.search);
     
-    const clientId = urlParams.get('client') || 'client1';
+    const clientId = urlParams.get('client') ||'client1';
     const token = urlParams.get('token')
+    const config =fetchClientConfig(clientId) 
+    setElementColor('.chatbot header', config.bgColor, config.color);
+  
+    // Append the first message to the chatbox
+    chatbox.innerHTML = ""; // Clear previous content
+    chatbox.appendChild(createChatLi(config.message, "incoming"));
 
-    fetchClientConfig(clientId)
-        .then(config => {
-            if (!config) return;
-            setElementColor('.chatbot header', config.bgColor, config.color);
+    const handleChat = () => {
+        userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
+        if (!userMessage) return;
 
-            // Append the first message to the chatbox
-            chatbox.innerHTML = ""; // Clear previous content
-            chatbox.appendChild(createChatLi(config.message, "incoming"));
+        // Clear the input textarea
+        chatInput.value = "";
 
-            const handleChat = () => {
-                userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
-                if (!userMessage) return;
-
-                // Clear the input textarea
-                chatInput.value = "";
-
-                // Append the user's message to the chatbox
-                chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+        // Append the user's message to the chatbox
+        chatbox.appendChild(createChatLi(userMessage, "outgoing"));
+        chatbox.scrollTo(0, chatbox.scrollHeight);
+         if(clientId ===urlParams.get('client')){
+            setTimeout(() => {
+                // Display "Thinking..." message while waiting for the response
+                const incomingChatLi = createChatLi("Thinking...", "incoming");
+                chatbox.appendChild(incomingChatLi);
                 chatbox.scrollTo(0, chatbox.scrollHeight);
-                if (clientId === urlParams.get('client')) {
-                    setTimeout(() => {
-                        // Display "Thinking..." message while waiting for the response
-                        const incomingChatLi = createChatLi("Thinking...", "incoming");
-                        chatbox.appendChild(incomingChatLi);
-                        chatbox.scrollTo(0, chatbox.scrollHeight);
-                        if (config.token !== null && config.token === token) {
-                            generateResponse(incomingChatLi, userMessage, config.prompt, config.token);
-                        }
-                    }, 600);
+                if(token==config.token){
+                    generateResponse(incomingChatLi, userMessage,config.prompt,config.token);
                 }
-            };
+            }, 600);
+         }
+       
+    };
 
-            chatInput.addEventListener("input", () => {
-                // Adjust the height of the input textarea based on its content
-                chatInput.style.height = `${chatInput.scrollHeight}px`;
-            });
+    chatInput.addEventListener("input", () => {
+        // Adjust the height of the input textarea based on its content
+        chatInput.style.height = `${chatInput.scrollHeight}px`;
+    });
 
-            chatInput.addEventListener("keydown", (e) => {
-                // If Enter key is pressed without Shift key and the window 
-                // width is greater than 800px, handle the chat
-                if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
-                    e.preventDefault();
-                    handleChat();
-                }
-            });
+    chatInput.addEventListener("keydown", (e) => {
+        // If Enter key is pressed without Shift key and the window 
+        // width is greater than 800px, handle the chat
+        if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
+            e.preventDefault();
+            handleChat();
+        }
+    });
 
-            sendChatBtn.addEventListener("click", handleChat);
-            closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
-        })
-        .catch(error => console.error("Error fetching client config:", error));
+    sendChatBtn.addEventListener("click", handleChat);
+    closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
 });

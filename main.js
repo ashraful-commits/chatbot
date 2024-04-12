@@ -8,7 +8,7 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt,token) 
 
     // Get the message element where the response will be displayed
     const messageElement = chatElement.querySelector("p");
-
+ console.log(token)
     // Define the properties for the API request
     const requestOptions = {
         method: "POST",
