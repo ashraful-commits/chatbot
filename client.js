@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const token = urlParams.get('token')
    
     const config =fetchClientConfig(clientId) 
-    console.log(config.token)
-    console.log(token)
+
     setElementColor('.chatbot header', config.bgColor, config.color);
   
     // Append the first message to the chatbox
@@ -36,9 +35,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 const incomingChatLi = createChatLi("Thinking...", "incoming");
                 chatbox.appendChild(incomingChatLi);
                 chatbox.scrollTo(0, chatbox.scrollHeight);
-                // if(token===config.token){
+                if(token.trim()===config.token.trim()){
                     generateResponse(incomingChatLi, userMessage,config.prompt);
-                // }
+                }
             }, 600);
          }
        
