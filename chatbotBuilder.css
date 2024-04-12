@@ -58,3 +58,32 @@ textarea {
   color: #333;
 }
 
+
+h2{
+
+  margin:50px;
+  text-align: center;
+}
+/* Add your table styling here */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
+}
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
