@@ -29,17 +29,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Append the user's message to the chatbox
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
         chatbox.scrollTo(0, chatbox.scrollHeight);
-         if(clientId ===urlParams.get('client')){
+
             setTimeout(() => {
                 // Display "Thinking..." message while waiting for the response
                 const incomingChatLi = createChatLi("Thinking...", "incoming");
                 chatbox.appendChild(incomingChatLi);
                 chatbox.scrollTo(0, chatbox.scrollHeight);
-                if(token.trim()===config.token.trim()){
+              
                     generateResponse(incomingChatLi, userMessage,config.prompt);
-                }
+                
             }, 600);
-         }
+         
        
     };
 
