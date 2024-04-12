@@ -8,7 +8,6 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt) => {
 
     // Get the message element where the response will be displayed
     const messageElement = chatElement.querySelector("p");
- console.log(token)
     // Define the properties for the API request
     const requestOptions = {
         method: "POST",
@@ -31,7 +30,6 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt) => {
             stop: "\n"
         })
     };
-  console.log(token)
 
       // Send the POST request to the OpenAI API
       fetch(API_URL, requestOptions)
