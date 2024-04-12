@@ -1,14 +1,8 @@
 import  {clientConfigurations } from "./main.js"
-console.log(clientConfigurations)
-// chatbotBuilder.js
-let clientConfigurations = {};
 
 
 
 function addClientConfiguration(clientName, config) {
-  if (!clientConfigurations) {
-    clientConfigurations = {}; // Initialize as an empty object if not set
-  }
   
   if (clientConfigurations.hasOwnProperty(clientName)) {
     alert("Client name already exists!");
