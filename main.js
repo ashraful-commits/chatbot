@@ -23,7 +23,7 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt) => {
                 "content": userMessage
             },
             {  // Use the ChatGPT prompt
-                "role": "user",
+                "role": "system",
                 "content": chatGPTPrompt
             }],
             max_tokens: 150,

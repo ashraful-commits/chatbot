@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const clientId = urlParams.get('client') ||'client1';
     const config =fetchClientConfig(clientId) 
-   console.log(config.bgColor)
     setElementColor('.chatbot header', config.bgColor, config.color);
   
     // Append the first message to the chatbox
