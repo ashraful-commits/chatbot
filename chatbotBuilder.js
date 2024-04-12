@@ -3,13 +3,13 @@
 
 
 
-function generateEmbedCode(prompt, bgColor, color, firstMessage,clientName) {
+function generateEmbedCode(prompt, bgColor, color, firstMessage,clientName,token) {
   const chatbotUrl = "https://chatbot-ruby-five.vercel.app/chatbot.html";
 
   // Example usage:
 
   const embedCode = `
-    <iframe id="iframe" src="${chatbotUrl}?client=${clientName}" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
+    <iframe id="iframe" src="${chatbotUrl}?client=${clientName}&token=${token}" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
    
     <button id="button" style="position: fixed; bottom: 50px; right: 50px; border-radius: 100%; padding: 10px; width: 50px; height: 50px; border: none; background: ${bgColor}; color: ${color}; display: flex; justify-content: center; align-items: center; z-index: 999999;" onclick="toggleIframe()">
     <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -46,11 +46,13 @@ window.onSubmitForm = function() {
   const color = document.getElementById('color').value;
   const firstMessage = document.getElementById('firstMessage').value;
   const clientName = document.getElementById('clientName').value;
+  const token = clientName + Math.floor(Math.random()*100000) ||null
   const client3Config = {
     bgColor: bgColor || "purple", 
     color: color || "white",   
     message: firstMessage || "Hi, how can I help you?", 
-    prompt: prompt || "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"
+    prompt: prompt || "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy",
+    token: token
   };
   const clientConfigurations =JSON.parse(localStorage.getItem(("clients"))) ||{}
   
@@ -62,7 +64,7 @@ window.onSubmitForm = function() {
     clientConfigurations[clientName] = client3Config
   localStorage.setItem("clients", JSON.stringify(clientConfigurations));
       // Generate embed code only if the client doesn't exist
-      const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage, clientName);
+      const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage, clientName,token);
       document.getElementById('embedCode').value = embedCode;
 
   }

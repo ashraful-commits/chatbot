@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     
     const clientId = urlParams.get('client') ||'client1';
+    const token = urlParams.get('token')
     const config =fetchClientConfig(clientId) 
     setElementColor('.chatbot header', config.bgColor, config.color);
   
@@ -26,14 +27,18 @@ document.addEventListener("DOMContentLoaded", function() {
         // Append the user's message to the chatbox
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
         chatbox.scrollTo(0, chatbox.scrollHeight);
-         
-        setTimeout(() => {
-            // Display "Thinking..." message while waiting for the response
-            const incomingChatLi = createChatLi("Thinking...", "incoming");
-            chatbox.appendChild(incomingChatLi);
-            chatbox.scrollTo(0, chatbox.scrollHeight);
-            generateResponse(incomingChatLi, userMessage,config.prompt);
-        }, 600);
+         if(clientId ===urlParams.get('client')){
+            setTimeout(() => {
+                // Display "Thinking..." message while waiting for the response
+                const incomingChatLi = createChatLi("Thinking...", "incoming");
+                chatbox.appendChild(incomingChatLi);
+                chatbox.scrollTo(0, chatbox.scrollHeight);
+                if(config.token !==null && token =config.token){
+                    generateResponse(incomingChatLi, userMessage,config.prompt,config.token);
+                }
+            }, 600);
+         }
+       
     };
 
     chatInput.addEventListener("input", () => {
