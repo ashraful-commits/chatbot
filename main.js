@@ -91,7 +91,7 @@ export function fetchClientConfig(clientName) {
             color: "white",    
             message: "Hi there 👋How can I help you today?",
             prompt: "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy",
-            token:null         
+                 
         };
     }
 }
