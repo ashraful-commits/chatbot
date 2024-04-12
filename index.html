@@ -20,6 +20,8 @@
       <form onsubmit="event.preventDefault(); onSubmitForm();">
           <label for="prompt">Prompt:</label>
           <input type="text" id="prompt" name="prompt">
+          <label for="clientName">Client Name:</label>
+          <input type="text" id="clientName" name="clientName">
           <label for="bgColor">Background Color:</label>
           <input type="color" id="bgColor" name="bgColor">
           <label for="color">Text Color:</label>
@@ -29,18 +31,29 @@
           <button type="submit">Generate Embed Code</button>
       </form>
       <textarea id="embedCode" rows="4" cols="50" readonly></textarea>
-    <button  style="background: purple; color: white; padding: 5px 15px; border: none; cursor: pointer;" type="button" onclick="copyEmbedCode()">Copy</button>
+    <button  style="background: #724ae8; color: white; padding: 5px 15px; border: none; cursor: pointer;" type="button" onclick="copyEmbedCode()">Copy</button>
     </div>
-    <iframe id="iframe" src="chatbot.html" style="pointer-events: auto; position: fixed; bottom: 20px; right: 20px; height:850px; width:100%; padding: 100px 50px; z-index:99999; ;" frameborder="0"></iframe>
+    <iframe id="iframe" src="chatbot.html"  style="width: 100%; height: 600px; border: none;"></iframe>
 
-    <button id="button" style="position: fixed; bottom: 50px; right: 50px; border-radius: 100%; padding: 10px; width: 50px; height: 50px; border: none; background: purple; color: white; display: flex; justify-content: center;align-items: center; z-index: 999999;" onclick="toggleIframe()">
+    <button id="button" style="position: fixed; bottom: 50px; right: 50px; border-radius: 100%; padding: 10px; width: 50px; height: 50px; border: none; background: #724ae8; color: white; display: flex; justify-content: center;align-items: center; z-index: 999999;" onclick="toggleIframe()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     </button>
     
   
-    
+    <script defer>
+      // Create a script element
+      var script = document.createElement('script');
+  
+      // Set the source attribute to the URL of the client.js file
+      script.src = 'client.js'; // Replace with the actual URL
+      script.type ='module';
+      // Append the script element to the body of the current page
+      document.body.appendChild(script);
+  </script>
+  
+  
     <script>
       var iframe = document.getElementById('iframe');
          iframe.style.display="none"
@@ -56,9 +69,8 @@
         }
       }
     </script>
-    
-
-    <script src="chatbotBuilder.js"></script>
-    
+  
+  
+    <script defer type="module" src="chatbotBuilder.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { generateResponse, createChatLi, setElementColor } from './main.js';
+import { generateResponse, createChatLi, setElementColor,fetchClientConfig } from './main.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.querySelector(".close-btn");
@@ -7,15 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const sendChatBtn = document.querySelector(".chat-input span");
     let userMessage = null; // Variable to store user's message
     const urlParams = new URLSearchParams(window.location.search);
-    const bgColor = urlParams.get('bgColor') || 'purple';
-    const color = urlParams.get('color') || 'white';
-    const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
-    const prompt = urlParams.get('prompt');
-    setElementColor('.chatbot header', bgColor, color);
+    
+    const clientId = urlParams.get('client') ||'client1';
+    const config =fetchClientConfig(clientId) 
+    console.log(config)
+    setElementColor('.chatbot header', config.bgColor, config.color);
   
     // Append the first message to the chatbox
     chatbox.innerHTML = ""; // Clear previous content
-    chatbox.appendChild(createChatLi(firstMessage, "incoming"));
+    chatbox.appendChild(createChatLi(config.message, "incoming"));
 
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace

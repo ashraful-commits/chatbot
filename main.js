@@ -17,8 +17,15 @@ export const generateResponse = (chatElement, userMessage, chatGPTPrompt) => {
             "Authorization": `Bearer ${API_KEY}`
         },
         body: JSON.stringify({
-            model: "text-davinci-002",
-            prompt: chatGPTPrompt, // Use the ChatGPT prompt
+            model: "gpt-3.5-turbo",
+            messages: [{  // Use the ChatGPT prompt
+                "role": "user",
+                "content": userMessage
+            },
+            {  // Use the ChatGPT prompt
+                "role": "user",
+                "content": chatGPTPrompt
+            }],
             max_tokens: 150,
             temperature: 0.7,
             stop: "\n"
@@ -68,3 +75,22 @@ export const setElementColor = (elementSelector, backgroundColor, color) => {
         console.error(`Element with selector '${elementSelector}' not found.`);
     }
 };
+
+export const clientConfigurations =JSON.parse(localStorage.getItem(("clients")))
+
+
+// Function to fetch client configuration based on client ID
+export function fetchClientConfig(clientId) {
+    // Check if client configuration exists for the given client ID
+    if (clientConfigurations.hasOwnProperty(clientId)) {
+        return clientConfigurations[clientId];
+    } else {
+        // Return default configuration or handle error as needed
+        return {
+            bgColor: "#724ae8", // Default background color
+            color: "white",     // Default text color
+            message: "Hi there 👋<br>How can I help you today?", // Default initial message
+            prompt: ""          // Default prompt
+        };
+    }
+}

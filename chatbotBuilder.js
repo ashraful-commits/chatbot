@@ -1,14 +1,21 @@
+import  {clientConfigurations } from "./main.js"
+console.log(clientConfigurations)
 // chatbotBuilder.js
+function addClientConfiguration(clientName, config) {
+  clientConfigurations[clientName] = config;
+  localStorage.setItem("clients", JSON.stringify(clientConfigurations));
+}
 
-function generateEmbedCode(prompt, bgColor, color, firstMessage) {
+
+
+
+function generateEmbedCode(prompt, bgColor, color, firstMessage,clientName) {
   const chatbotUrl = "https://chatbot-ruby-five.vercel.app/chatbot.html";
-  const encodedPrompt = encodeURIComponent(prompt);
-  const encodedColor = encodeURIComponent(color);
-  const encodedBgColor = encodeURIComponent(bgColor);
-  const encodedFirstMessage = encodeURIComponent(firstMessage);
-  
+
+  // Example usage:
+
   const embedCode = `
-    <iframe id="iframe" src="${chatbotUrl}?prompt=${encodedPrompt}&bgColor=${encodedBgColor}&color=${encodedColor}&message=${encodedFirstMessage}" style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
+    <iframe id="iframe" src="${chatbotUrl}?client=${clientName} style="pointer-events: auto; position: fixed; bottom: 0; right: 0; height:950px; width:660px; z-index:999999; border:none;padding:100px 50px;"></iframe>
     
     <button id="button" style="position: fixed; bottom: 50px; right: 50px; border-radius: 100%; padding: 10px; width: 50px; height: 50px; border: none; background: ${bgColor}; color: ${color}; display: flex; justify-content: center; align-items: center; z-index: 999999;" onclick="toggleIframe()">
     <svg xmlns="http://www.w3.org/2000/svg" id="toggleIcon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -39,19 +46,27 @@ function generateEmbedCode(prompt, bgColor, color, firstMessage) {
   return embedCode;
 }
 
-function onSubmitForm() {
+window.onSubmitForm = function() {
   const prompt = document.getElementById('prompt').value;
   const bgColor = document.getElementById('bgColor').value;
   const color = document.getElementById('color').value;
   const firstMessage = document.getElementById('firstMessage').value;
+  const clientName = document.getElementById('clientName').value;
+  const client3Config = {
+    bgColor: bgColor ||purple, 
+    color: color ||white,   
+    message: firstMessage || "Hi how can i help you", 
+    prompt: prompt || "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"
+  };
+  addClientConfiguration(clientName, client3Config);
   
-  const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage);
+  const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage, clientName);
   document.getElementById('embedCode').value = embedCode;
-}
+};
 
-function copyEmbedCode() {
+window.copyEmbedCode = function() {
   const textarea = document.getElementById('embedCode');
   textarea.select();
   document.execCommand('copy');
   alert('Embed code copied to clipboard!');
-}
+};
