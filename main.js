@@ -89,7 +89,7 @@ export function fetchClientConfig(clientName) {
         return {
             bgColor: "#724ae8", 
             color: "white",    
-            message: "Hi there 👋<br>How can I help you today?",
+            message: "Hi there 👋How can I help you today?",
             prompt: "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"         
         };
     }
