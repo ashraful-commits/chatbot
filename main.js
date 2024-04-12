@@ -87,10 +87,10 @@ export function fetchClientConfig(clientName) {
     } else {
         // Return default configuration or handle error as needed
         return {
-            bgColor: "#724ae8", // Default background color
-            color: "white",     // Default text color
-            message: "Hi there 👋<br>How can I help you today?", // Default initial message
-            prompt: ""          // Default prompt
+            bgColor: "#724ae8", 
+            color: "white",    
+            message: "Hi there 👋<br>How can I help you today?",
+            prompt: "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"         
         };
     }
 }

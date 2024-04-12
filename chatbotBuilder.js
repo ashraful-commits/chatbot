@@ -2,19 +2,6 @@
 
 
 
-function addClientConfiguration(clientName, config) {
-  const clientConfigurations =JSON.parse(localStorage.getItem(("clients")))
-  if (clientConfigurations.hasOwnProperty(clientName)) {
-    alert("Client name already exists!");
-    return; // Exit the function early if client name already exists
-  }
-  
-  clientConfigurations[clientName] = config;
-  localStorage.setItem("clients", JSON.stringify(clientConfigurations));
-}
-
-
-
 
 function generateEmbedCode(prompt, bgColor, color, firstMessage,clientName) {
   const chatbotUrl = "https://chatbot-ruby-five.vercel.app/chatbot.html";
@@ -60,16 +47,29 @@ window.onSubmitForm = function() {
   const firstMessage = document.getElementById('firstMessage').value;
   const clientName = document.getElementById('clientName').value;
   const client3Config = {
-    bgColor: bgColor ||purple, 
-    color: color ||white,   
-    message: firstMessage || "Hi how can i help you", 
+    bgColor: bgColor || "purple", 
+    color: color || "white",   
+    message: firstMessage || "Hi, how can I help you?", 
     prompt: prompt || "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"
   };
-  addClientConfiguration(clientName, client3Config);
+  const clientConfigurations =JSON.parse(localStorage.getItem(("clients")))
   
-  const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage, clientName);
-  document.getElementById('embedCode').value = embedCode;
+  // Check if the client already exists
+  if (clientConfigurations.hasOwnProperty(clientName)) {
+    alert("Client name already exists!");
+    return; // Exit the function early if client name already exists
+  }else{
+    clientConfigurations[clientName] = client3Config
+  localStorage.setItem("clients", JSON.stringify(clientConfigurations));
+      // Generate embed code only if the client doesn't exist
+      const embedCode = generateEmbedCode(prompt, bgColor, color, firstMessage, clientName);
+      document.getElementById('embedCode').value = embedCode;
+
+  }
+
+ 
 };
+
 
 window.copyEmbedCode = function() {
   const textarea = document.getElementById('embedCode');
