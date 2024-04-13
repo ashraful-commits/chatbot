@@ -1,4 +1,4 @@
-import { generateResponse, createChatLi, setElementColor,fetchClientConfig } from './main.js';
+import { generateResponse, createChatLi, setElementColor } from './main.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.querySelector(".close-btn");
@@ -7,17 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const sendChatBtn = document.querySelector(".chat-input span");
     let userMessage = null; // Variable to store user's message
     const urlParams = new URLSearchParams(window.location.search);
-    
-    const clientId = urlParams.get('client') ||'client1';
-    const token = urlParams.get('token')
-   
-    const config =fetchClientConfig(clientId) 
-
-    setElementColor('.chatbot header', config.bgColor, config.color);
+    const bgColor = urlParams.get('bgColor') || '#724ae8';
+    const color = urlParams.get('color') || 'white';
+    const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
+    const prompt = urlParams.get('prompt');
+    setElementColor('.chatbot header', bgColor, color);
   
     // Append the first message to the chatbox
     chatbox.innerHTML = ""; // Clear previous content
-    chatbox.appendChild(createChatLi(config.message, "incoming"));
+    chatbox.appendChild(createChatLi(firstMessage, "incoming"));
 
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
@@ -29,17 +27,14 @@ document.addEventListener("DOMContentLoaded", function() {
         // Append the user's message to the chatbox
         chatbox.appendChild(createChatLi(userMessage, "outgoing"));
         chatbox.scrollTo(0, chatbox.scrollHeight);
-
-            setTimeout(() => {
-                // Display "Thinking..." message while waiting for the response
-                const incomingChatLi = createChatLi("Thinking...", "incoming");
-                chatbox.appendChild(incomingChatLi);
-                chatbox.scrollTo(0, chatbox.scrollHeight);
-                    generateResponse(incomingChatLi, userMessage,config.prompt);
-                
-            }, 600);
          
-       
+        setTimeout(() => {
+            // Display "Thinking..." message while waiting for the response
+            const incomingChatLi = createChatLi("Thinking...", "incoming");
+            chatbox.appendChild(incomingChatLi);
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+            generateResponse(incomingChatLi, userMessage);
+        }, 600);
     };
 
     chatInput.addEventListener("input", () => {
