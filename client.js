@@ -11,10 +11,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const color = urlParams.get('color') || 'white';
     const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
     const prompt = urlParams.get('prompt');
-    setElementColor('.chatbot header', bgColor, color);
-  
+    
+    // Check if chatbox element exists before setting its color
+    const chatHeader = document.querySelector('.chatbot header');
+    if (chatHeader) {
+        setElementColor('.chatbot header', bgColor, color);
+    } else {
+        console.error('Element with selector \'.chatbot header\' not found.');
+    }
+
+    // Clear previous content inside chatbox
+    chatbox.innerHTML = ""; 
+
     // Append the first message to the chatbox
-    chatbox.innerHTML = ""; // Clear previous content
     chatbox.appendChild(createChatLi(firstMessage, "incoming"));
 
     const handleChat = () => {
