@@ -1,13 +1,28 @@
+import { createChatLi, generateResponse ,setElementColor} from './main.js';
 
-import { createChatLi, generateResponse } from './main.js';
 const chatbotToggler = document.querySelector(".chatbot-toggler");
 const closeBtn = document.querySelector(".close-btn");
 const chatbox = document.querySelector(".chatbox");
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
-let userMessage = null; // Variable to store user's message
+let userMessage = null; 
+let chatGptPrompt = "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"; 
+let firstMessage = "Hi there 👋<br>How can I help you today?"; // Initial message
+
 const inputInitHeight = chatInput.scrollHeight;
 
+setElementColor(".chatbot header", 'purple','white')
+setElementColor(".chatbot-toggler", 'purple','white')
+
+// Function to add the first message dynamically
+const addFirstMessage = () => {
+  const firstMessageLi = createChatLi(firstMessage, "incoming");
+  chatbox.appendChild(firstMessageLi);
+  chatbox.scrollTo(0, chatbox.scrollHeight);
+}
+
+// Call the function to add the first message when the DOM content is loaded
+document.addEventListener("DOMContentLoaded", addFirstMessage);
 
 const handleChat = () => {
   userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
@@ -17,7 +32,6 @@ const handleChat = () => {
   chatInput.value = "";
   chatInput.style.height = `${inputInitHeight}px`;
 
-  // Append the user's message to the chatbox
   chatbox.appendChild(createChatLi(userMessage, "outgoing"));
   chatbox.scrollTo(0, chatbox.scrollHeight);
   
@@ -26,7 +40,7 @@ const handleChat = () => {
       const incomingChatLi = createChatLi("Thinking...", "incoming");
       chatbox.appendChild(incomingChatLi);
       chatbox.scrollTo(0, chatbox.scrollHeight);
-      generateResponse(incomingChatLi,userMessage);
+      generateResponse(incomingChatLi,userMessage,chatGptPrompt);
   }, 600);
 }
 

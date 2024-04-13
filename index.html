@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="chatbotBuilder.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Fonts Link For Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -15,41 +14,6 @@
     
   </head>
   <body>
-    <div class="container">
-      <h1>Chatbot Builder</h1>
-      <form onsubmit="event.preventDefault(); onSubmitForm();">
-          <label for="prompt">Prompt:</label>
-          <input type="text" id="prompt" name="prompt">
-          <label for="clientName">Client Name:</label>
-          <input type="text" id="clientName" name="clientName">
-          <label for="bgColor">Background Color:</label>
-          <input type="color" id="bgColor" name="bgColor">
-          <label for="color">Text Color:</label>
-          <input type="color" id="color" name="color">
-          <label for="firstMessage">First Message:</label>
-          <input type="text" id="firstMessage" name="firstMessage">
-          <button type="submit">Generate Embed Code</button>
-      </form>
-      <textarea id="embedCode" rows="4" cols="50" readonly></textarea>
-    <button  style="background: #724ae8; color: white; padding: 5px 15px; border: none; cursor: pointer;" type="button" onclick="copyEmbedCode()">Copy</button>
-    </div>
-
-    <!-- table here   -->
- 
-    <h2>Client Configuration</h2>
-    <table id="clientTable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Prompt</th>
-          <th>First Message</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Table rows will be dynamically added here -->
-      </tbody>
-    </table>
     <button class="chatbot-toggler">
       <span class="material-symbols-rounded">mode_comment</span>
       <span class="material-symbols-outlined">close</span>
@@ -61,8 +25,7 @@
       </header>
       <ul class="chatbox">
         <li class="chat incoming">
-          <span class="material-symbols-outlined">smart_toy</span>
-          <p>Hi there 👋<br>How can I help you today?</p>
+          
         </li>
       </ul>
       <div class="chat-input">
@@ -72,8 +35,7 @@
     </div>
   <script type="module" src="client.js" defer></script>
    
- <!-- chatbuilder script  -->
-    <script defer type="module" src="chatbotBuilder.js"></script>
+
     <!-- table script  -->
      <script>
       // Retrieve data from localStorage
