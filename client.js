@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const sendChatBtn = document.querySelector(".chat-input span");
     let userMessage = null; // Variable to store user's message
     
-    // if (!closeBtn || !chatbox || !chatInput || !sendChatBtn) {
-    //     console.error('One or more elements not found.');
-    //     return;
-    // }
+    if (!closeBtn || !chatbox || !chatInput || !sendChatBtn) {
+        console.error('One or more elements not found.');
+        return;
+    }
 
     const bgColor = '#724ae8'; // Default background color
     const color = 'white'; // Default text color
