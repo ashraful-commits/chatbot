@@ -17,9 +17,7 @@ setElementColor(".chatbot header", '#724ae8','white');
 setElementColor(".chatbot-toggler", '#724ae8','white');
 setElementColor(".chatbot-toggler span", '','white');
 
-
 const inputInitHeight = chatInput.scrollHeight;
-
 
 // Function to add the first message dynamically when the DOM content is loaded
 const addFirstMessage = () => {

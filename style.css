@@ -111,12 +111,12 @@ header h2 {
 .chatbox .incoming span {
   width: 32px;
   height: 32px;
-  color: #fff !important;
+  color: #fff ;
   cursor: default;
   text-align: center;
   line-height: 32px;
   align-self: flex-end;
-  background: #724ae8 !important;
+  background: #724ae8 ;
   border-radius: 4px;
   margin: 0 10px 7px 0;
 }
