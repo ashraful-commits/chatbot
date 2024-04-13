@@ -50,16 +50,28 @@
         <!-- Table rows will be dynamically added here -->
       </tbody>
     </table>
-    <div id="external-content"></div>
-    <script>
-      fetch('chatbot.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('external-content').innerHTML = html;
-        })
-        .catch(error => console.error('Error fetching HTML:', error));
-    </script>
-    <script type="module" defer src="client.js"></script> 
+    <button class="chatbot-toggler">
+      <span class="material-symbols-rounded">mode_comment</span>
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+      <header>
+        <h2>Chatbot</h2>
+        <span class="close-btn material-symbols-outlined">close</span>
+      </header>
+      <ul class="chatbox">
+        <li class="chat incoming">
+          <span class="material-symbols-outlined">smart_toy</span>
+          <p>Hi there 👋<br>How can I help you today?</p>
+        </li>
+      </ul>
+      <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+      </div>
+    </div>
+  <script type="module" src="client.js" defer></script>
+   
  <!-- chatbuilder script  -->
     <script defer type="module" src="chatbotBuilder.js"></script>
     <!-- table script  -->
