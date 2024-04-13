@@ -4,30 +4,21 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatInput = document.querySelector(".chat-input textarea");
     const sendChatBtn = document.querySelector(".chat-input span");
     let userMessage = null; // Variable to store user's message
-    const urlParams = new URLSearchParams(window.location.search);
-    const bgColor = urlParams.get('bgColor') || '#724ae8';
-    const color = urlParams.get('color') || 'white';
-    const firstMessage = urlParams.get('message') || 'Hi there 👋<br>How can I help you today?';
-    const prompt = urlParams.get('prompt');
     
-    // Check if chatbox element exists before setting its color
-    const chatHeader = document.querySelector('.chatbot header');
-    if (chatHeader) {
-        setElementColor('.chatbot header', bgColor, color);
-    } else {
-        console.error('Element with selector \'.chatbot header\' not found.');
+    if (!closeBtn || !chatbox || !chatInput || !sendChatBtn) {
+        console.error('One or more elements not found.');
+        return;
     }
 
-    // Check if chatbox element exists before clearing its content
-    if (chatbox) {
-        // Clear previous content inside chatbox
-        chatbox.innerHTML = ""; 
+    const bgColor = '#724ae8'; // Default background color
+    const color = 'white'; // Default text color
+    const firstMessage = 'Hi there 👋<br>How can I help you today?';
+    
+    // Clear previous content inside chatbox
+    chatbox.innerHTML = ""; 
 
-        // Append the first message to the chatbox
-        chatbox.appendChild(createChatLi(firstMessage, "incoming"));
-    } else {
-        console.error('Element with selector \'.chatbox\' not found.');
-    }
+    // Append the first message to the chatbox
+    chatbox.appendChild(createChatLi(firstMessage, "incoming"));
 
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
