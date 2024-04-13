@@ -13,8 +13,8 @@ let userMessage = null;
 let chatGptPrompt = "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"; 
 let firstMessage = "Hi there 👋<br>How can I help you today?"; 
 // Set colors for chatbot header and toggler
-setElementColor(".chatbot header", 'purple','white');
-setElementColor(".chatbot-toggler", 'purple','white');
+setElementColor(".chatbot header", '#724ae8','white');
+setElementColor(".chatbot-toggler", '#724ae8','white');
 
 const inputInitHeight = chatInput.scrollHeight;
 
