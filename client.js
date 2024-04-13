@@ -1,5 +1,3 @@
-import { generateResponse, createChatLi, setElementColor } from './main.js';
-
 document.addEventListener("DOMContentLoaded", function() {
     const closeBtn = document.querySelector(".close-btn");
     const chatbox = document.querySelector(".chatbox");
@@ -20,11 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error('Element with selector \'.chatbot header\' not found.');
     }
 
-    // Clear previous content inside chatbox
-    chatbox.innerHTML = ""; 
+    // Check if chatbox element exists before clearing its content
+    if (chatbox) {
+        // Clear previous content inside chatbox
+        chatbox.innerHTML = ""; 
 
-    // Append the first message to the chatbox
-    chatbox.appendChild(createChatLi(firstMessage, "incoming"));
+        // Append the first message to the chatbox
+        chatbox.appendChild(createChatLi(firstMessage, "incoming"));
+    } else {
+        console.error('Element with selector \'.chatbox\' not found.');
+    }
 
     const handleChat = () => {
         userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
