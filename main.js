@@ -25,7 +25,7 @@ export const generateResponse = (chatElement,userMessage,prompt) => {
         },
         body: JSON.stringify({
             model: "gpt-3.5-turbo", // Use correct model name
-            messages: [{role: "user", content: userMessage},{role: "assistant", content: chatGptPrompt}], // Use "assistant" instead of "system" for GPT-3.5-Turbo
+            messages: [{role: "user", content: userMessage},{role: "assistant", content: prompt}], // Use "assistant" instead of "system" for GPT-3.5-Turbo
             max_tokens: 150, // Use "max_tokens" instead of "max_token"
             stop: "\n"
         })

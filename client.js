@@ -11,12 +11,13 @@ const sendChatBtn = document.querySelector(".chat-input span");
 // Initialize variables
 let userMessage = null; 
 let chatGptPrompt = "You are a sales consultant on a shoe sales site, your job is to answer customer questions and help them buy"; 
-let firstMessage = "Hi there 👋<br>How can I help you today?"; // Initial message
-const inputInitHeight = chatInput.scrollHeight;
-
+let firstMessage = "Hi there 👋<br>How can I help you today?"; 
 // Set colors for chatbot header and toggler
 setElementColor(".chatbot header", 'purple','white');
 setElementColor(".chatbot-toggler", 'purple','white');
+
+const inputInitHeight = chatInput.scrollHeight;
+
 
 // Function to add the first message dynamically when the DOM content is loaded
 const addFirstMessage = () => {
