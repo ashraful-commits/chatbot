@@ -15,6 +15,8 @@ let firstMessage = "Hi there 👋<br>How can I help you today?";
 // Set colors for chatbot header and toggler
 setElementColor(".chatbot header", '#724ae8','white');
 setElementColor(".chatbot-toggler", '#724ae8','white');
+setElementColor(".chatbot-toggler span", '','white');
+
 
 const inputInitHeight = chatInput.scrollHeight;
 

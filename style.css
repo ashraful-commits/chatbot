@@ -78,7 +78,6 @@ body.show-chatbot .chatbot {
   position: absolute;
   right: 15px;
   top: 50%;
-  display: none;
   cursor: pointer;
   transform: translateY(-50%);
 }
@@ -112,12 +111,12 @@ header h2 {
 .chatbox .incoming span {
   width: 32px;
   height: 32px;
-  color: #fff;
+  color: #fff !important;
   cursor: default;
   text-align: center;
   line-height: 32px;
   align-self: flex-end;
-  background: #724ae8;
+  background: #724ae8 !important;
   border-radius: 4px;
   margin: 0 10px 7px 0;
 }
@@ -133,6 +132,7 @@ header h2 {
 .chatbox .incoming p {
   border-radius: 10px 10px 10px 0;
 }
+
 .chatbox .chat p.error {
   color: #721c24;
   background: #f8d7da;
@@ -202,3 +202,5 @@ header h2 {
     display: block;
   }
 }
+
+
