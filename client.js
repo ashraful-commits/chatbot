@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const incomingChatLi = createChatLi("Thinking...", "incoming");
                 chatbox.appendChild(incomingChatLi);
                 chatbox.scrollTo(0, chatbox.scrollHeight);
-              
                     generateResponse(incomingChatLi, userMessage,config.prompt);
                 
             }, 600);
