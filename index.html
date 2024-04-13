@@ -35,48 +35,49 @@
     </div>
   <script type="module" src="client.js" defer></script>
    
+<!-- //================================== create scrpit -->
+<input type="text" id="fileNameInput" placeholder="Enter file name">
+<button id="createFileBtn">Create File</button>
 
-    <!-- table script  -->
-     <script>
-      // Retrieve data from localStorage
-      const clientConfigurations = JSON.parse(localStorage.getItem('clients')) || {};
-  
-      // Get reference to the table body
-      const tableBody = document.querySelector('#clientTable tbody');
-  
-      // Function to add table rows from localStorage data
-      function populateTable() {
-        tableBody.innerHTML = ''; // Clear existing rows
-        for (const clientName in clientConfigurations) {
-          if (clientConfigurations.hasOwnProperty(clientName)) {
-            const config = clientConfigurations[clientName];
-            const row = `
-              <tr>
-                <td>${clientName}</td>
-                <td>${config.prompt}</td>
-                <td>${config.message}</td>
-                <td><button class="delete-btn" data-client="${clientName}">Delete</button></td>
-              </tr>
-            `;
-            tableBody.innerHTML += row;
-          }
-        }
-      }
-  
-      // Initial population of table
-      populateTable();
-  
-      // Event listener for delete buttons
-      tableBody.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete-btn')) {
-          const clientName = event.target.dataset.client;
-          if (confirm(`Are you sure you want to delete ${clientName}?`)) {
-            delete clientConfigurations[clientName];
-            localStorage.setItem('clients', JSON.stringify(clientConfigurations));
-            populateTable(); // Update table after deletion
-          }
-        }
-      });
-    </script>
+<script>
+  const createFile = (fileName) => {
+    // Define the content of the file
+    const fileContent = `// Import necessary functions from main.js
+import { createChatLi, generateResponse, setElementColor } from './main.js';
+
+// Your existing code here`;
+
+    // Create a Blob object containing the file content
+    const blob = new Blob([fileContent], { type: 'text/javascript' });
+
+    // Create a temporary anchor element
+    const a = document.createElement('a');
+    a.href = window.URL.createObjectURL(blob);
+
+    // Set the file name
+    a.download = fileName + '.js'; // Append '.js' extension
+
+    // Programmatically trigger a click event to download the file
+    document.body.appendChild(a);
+    a.click();
+
+    // Clean up
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(a.href);
+}
+
+// Assuming you have an input field with id "fileNameInput" for getting the file name
+const fileNameInput = document.getElementById("fileNameInput");
+const createFileBtn = document.getElementById("createFileBtn");
+
+createFileBtn.addEventListener("click", () => {
+    const fileName = fileNameInput.value.trim(); // Get user entered file name and remove extra whitespace
+    if (fileName) {
+        createFile(fileName);
+    } else {
+        alert("Please enter a file name.");
+    }
+})
+</script>
   </body>
 </html>
