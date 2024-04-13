@@ -179,6 +179,8 @@ header h2 {
   .chatbot-toggler {
     right: 20px;
     bottom: 20px;
+    background-color: #724ae8;
+    color: white;
 
   }
   .chatbot {
